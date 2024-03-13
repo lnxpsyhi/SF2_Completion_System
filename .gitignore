@@ -1,0 +1,8 @@
+# Eclipse specific
+.classpath
+.project
+.settings/
+bin/
+
+# Maven specific
+target/
