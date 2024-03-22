@@ -12,11 +12,12 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.CellReference;
 
-public class Methods {
-
+public class CountDates {
 	private FileInputStream inputStream;
 	private Workbook workbook;
 	private Sheet sheet;
+	
+	
 	private int blanks;
 	
 	private int numberOfDates;
@@ -28,7 +29,8 @@ public class Methods {
 	public int getBlanks() {
 		return blanks;
 	} 
-
+	
+	
 	public void countDates(String path, String coordinates) {
 		try {
 			inputStream = new FileInputStream(path);
@@ -79,10 +81,10 @@ public class Methods {
                           
                        }
                     
-               	}
+               	   }
                 }
                 	
-     
+                
             } else {
                 System.out.println("Invalid placeholder format");
             }
@@ -93,29 +95,6 @@ public class Methods {
 		}
 	}
 
-	public void countAll(String path, String coordinates) {
-		try {
-			inputStream = new FileInputStream(path);
-			workbook = WorkbookFactory.create(inputStream);
-			sheet = workbook.getSheetAt(1);
-			
-			int colonIndex = coordinates.indexOf(":");
-
-			
-			
-            if (colonIndex != -1) {
-
-                CellReference start = new CellReference(coordinates.substring(0, colonIndex));
-                CellReference end = new CellReference(coordinates.substring(colonIndex + 1));
-                
-                
-                
-            }
-		} catch (IOException e) {
-			System.out.println(e);
-		}
-	}
-
-
 	
+
 }
