@@ -3,6 +3,7 @@ package methods;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -24,24 +25,32 @@ public class CountGirls {
 	
     private int girlsTotalAbsences = 0;
 	
+    private ArrayList<Integer> girlsTotalPerDay = new ArrayList<Integer>();
+    
+    public int getGirlsTotalPerDay(int i) {
+    	return girlsTotalPerDay.get(i);
+    }
 	public int getGirlsTotalAbsences() {
 		return girlsTotalAbsences;
 	}
-	
+	public ArrayList<Integer> getGirlsTotalPerDay() {
+	    return girlsTotalPerDay;
+	}
+
 	private int girlsTotalPresences = 0;
 	
 	public int getGirlsTotalPresences() {
 		return girlsTotalPresences;
 	}
 	
-	public void countGirls(String path, String coordinates, String dateCoordinates) {
-		cd.countDates(path, dateCoordinates);
-		cs.countStudents(path, coordinates);
+	public void countGirls(String path, String coordinates, String dateCoordinates, int sheetNo) {
+		cd.countDates(path, dateCoordinates, sheetNo);
+		cs.countStudents(path, coordinates, sheetNo);
 		
 		try {
 			inputStream = new FileInputStream(path);
 			workbook = WorkbookFactory.create(inputStream);
-			sheet = workbook.getSheetAt(1);
+			sheet = workbook.getSheetAt(sheetNo);
 			
 			int colonIndex = coordinates.indexOf(":");
 
@@ -106,16 +115,21 @@ public class CountGirls {
                                     currentCell2 = sheet.getRow(firstRow).getCell(firstColumn);
                                 }
                                 
-                                if (currentCell2.getCellType().equals(CellType.BLANK) && rowPerDayIteration > cs.getBoysNumber() + 1) {
+                                if (currentCell2.getCellType().equals(CellType.BLANK) && rowPerDayIteration > cs.getBoysNumber() + 1 && rowPerDayIteration <= cs.getBoysNumber() + cs.getGirlsNumber() + 1) {
                                     presencePerDay++;
                                 }
                                 if (rowPerDayIteration == cs.getBoysNumber() + cs.getGirlsNumber() + 2) {
                                     currentCell2.setCellValue(presencePerDay);
-                                    System.out.println(currentCell2.getNumericCellValue() + ": " + currentCell2.getAddress());
+//                                    System.out.println(currentCell2.getNumericCellValue() + ": " + currentCell2.getAddress());
                                     
                                 }
                             }
+                            if (girlsTotalPerDay.size() < cd.getNumberOfDates()) {
+                            	girlsTotalPerDay.add(presencePerDay);
+                            	
+                            }
                         }    
+                        
                         
                 		if (rowIteration > cs.getBoysNumber() + 1 && rowIteration < cs.getBoysNumber() + cs.getGirlsNumber() + 1 && cellIteration > 2 && cellIteration < 28 && currentCell.getStringCellValue().trim().equalsIgnoreCase("x")) {
                 			studentAbsences++;
@@ -140,7 +154,7 @@ public class CountGirls {
                 }
                 
             }
-           
+            
             
             try (FileOutputStream fileout = new FileOutputStream(path)) {
                 workbook.write(fileout);

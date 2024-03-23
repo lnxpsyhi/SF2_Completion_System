@@ -3,6 +3,7 @@ package methods;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -22,10 +23,17 @@ public class CountBoys {
 
 	CountDates cd = new CountDates();
 	CountStudents cs = new CountStudents();
-	
+
+	private ArrayList<Integer> boysTotalPerDay = new ArrayList<Integer>();
 	
 	private int boysTotalAbsences = 0;
 	
+	public int getBoysTotalPerDay(int i) {
+		return boysTotalPerDay.get(i);
+	}
+	public ArrayList<Integer> getBoysTotalPerDay() {
+		return boysTotalPerDay;
+	}
 	public int getBoysTotalAbsences() {
 		return boysTotalAbsences;
 	}
@@ -38,14 +46,14 @@ public class CountBoys {
 	
 
 	
-	public void countBoys(String path, String coordinates, String dateCoordinates) {
-		cd.countDates(path, dateCoordinates);
-		cs.countStudents(path, coordinates);
+	public void countBoys(String path, String coordinates, String dateCoordinates, int sheetNo) {
+		cd.countDates(path, dateCoordinates, sheetNo);
+		cs.countStudents(path, coordinates, sheetNo);
 		
 		try {
 			inputStream = new FileInputStream(path);
 			workbook = WorkbookFactory.create(inputStream);
-			sheet = workbook.getSheetAt(1);
+			sheet = workbook.getSheetAt(sheetNo);
 			
 			int colonIndex = coordinates.indexOf(":");
 
@@ -94,7 +102,7 @@ public class CountBoys {
                                 Row currentRow2 = sheet.getRow(row2);
                                 Cell currentCell2 = currentRow2.getCell(cell);
                                 
-                                // Check if the current cell is within a merged region
+                  
                                 CellRangeAddress mergedRegion2 = null;
                                 for (int i = 0; i < sheet.getNumMergedRegions(); i++) {
                                     CellRangeAddress region = sheet.getMergedRegion(i);
@@ -116,11 +124,17 @@ public class CountBoys {
                                 }
                                 if (rowPerDayIteration == cs.getBoysNumber() + 1) {
                                     currentCell2.setCellValue(presencePerDay);
-                                    System.out.println(currentCell2.getNumericCellValue() + ": " + currentCell2.getAddress());
+//                                    System.out.println(currentCell2.getNumericCellValue() + ": " + currentCell2.getAddress());
                                 }
+                 
+                               
+                            }
+                            if (boysTotalPerDay.size() < cd.getNumberOfDates()) {
+                            	boysTotalPerDay.add(presencePerDay);
                             }
                         }
-
+                        
+                       
                         
                 		if (rowIteration <= cs.getBoysNumber() && cellIteration > 2 && cellIteration < 28 && currentCell.getStringCellValue().trim().equalsIgnoreCase("x")) {
                 			studentAbsences++;

@@ -31,11 +31,11 @@ public class CountDates {
 	} 
 	
 	
-	public void countDates(String path, String coordinates) {
+	public void countDates(String path, String coordinates, int sheetNo) {
 		try {
 			inputStream = new FileInputStream(path);
 			workbook = WorkbookFactory.create(inputStream);
-			sheet = workbook.getSheetAt(1);
+			sheet = workbook.getSheetAt(sheetNo);
 			
 			
 			

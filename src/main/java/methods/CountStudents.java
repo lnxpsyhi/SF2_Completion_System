@@ -30,11 +30,11 @@ public class CountStudents {
 		return girlsNumber;
 	}
 	
-	public void countStudents(String path, String coordinates) {
+	public void countStudents(String path, String coordinates, int sheetNo) {
 		try {
 			inputStream = new FileInputStream(path);
 			workbook = WorkbookFactory.create(inputStream);
-			sheet = workbook.getSheetAt(1);
+			sheet = workbook.getSheetAt(sheetNo);
 			
 			int colonIndex = coordinates.indexOf(":");
 
@@ -48,9 +48,9 @@ public class CountStudents {
                 
                 
                 
-                int rowIteration = 0;
+         
                 for (int row = start.getRow(); row <= end.getRow(); row++) {
-                	rowIteration++;
+              
                 	Row currentRow = sheet.getRow(row);
                 	int cellIteration = 0;
                 	for (int cell = start.getCol(); cell <= end.getCol(); cell++) {
