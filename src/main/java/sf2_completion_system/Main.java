@@ -8,7 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
@@ -38,12 +40,12 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		scene = new Scene(loadFXML("excchooser"));
+		scene = new Scene(loadFXML("sf2"));
         primaryStage.setScene(scene);
-        primaryStage.setMinWidth(200);
-        primaryStage.setMinHeight(200);
         primaryStage.setTitle("Student Form 2 Completion System");
         primaryStage.getIcons().add(new Image(new FileInputStream(IMGICON)));
+        primaryStage.setResizable(false);
+        primaryStage.initStyle(StageStyle.UTILITY);
         primaryStage.show();
 	}
 	
