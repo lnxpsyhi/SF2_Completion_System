@@ -13,6 +13,11 @@
 	-fx-image: url(../images/cshs_logo.png);
 }
 
-hbox {
-	-fx-alignment: center;
+.proceedbtn {
+	-fx-background-color: #fff;
+}
+
+.proceedbtn:hover {
+	-fx-background-color: yellow;
+	-fx-cursor: hand;
 }

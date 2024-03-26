@@ -7,23 +7,25 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
 public class SF2GUI implements Initializable {
 	
 	@FXML
-	private void open() {
-		System.out.println(chooseFile());
-	}
+	private TextField tf1 = new TextField();
 	
-	private String chooseFile() {
+	private String path = "";
+	
+	@FXML
+	private void open() {
 		FileChooser chooser = new FileChooser();
 		File file = chooser.showOpenDialog(Window.getWindows().get(0));
-		String filePath = file != null ? file.getAbsolutePath() : "";
-		return filePath;
+		path = file != null ? file.getAbsolutePath() : "";
+		System.out.println(path);
+		tf1.setText(path);
 	}
-	
 	
 	@FXML
 	private void exit() {

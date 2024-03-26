@@ -45,9 +45,9 @@
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="schoollogo" />
             <AnchorPane>
                <children>
-                  <Label layoutY="49.0" styleClass="schoolname" text="Cainta Senior High School" />
-                  <TextField layoutX="29.0" layoutY="175.0" prefHeight="25.0" prefWidth="200.0" />
-                  <Button layoutX="232.0" layoutY="175.0" mnemonicParsing="false" text="Proceed" />
+                  <Label layoutX="17.0" layoutY="48.0" styleClass="schoolname" text="Cainta Senior High School" />
+                  <TextField fx:id="tf1" layoutX="29.0" layoutY="175.0" prefHeight="25.0" prefWidth="200.0" promptText="File path..." />
+                  <Button layoutX="232.0" layoutY="175.0" mnemonicParsing="false" styleClass="proceedbtn" text="Proceed" />
                </children>
             </AnchorPane>
          </children>
