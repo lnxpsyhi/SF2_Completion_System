@@ -1,0 +1,23 @@
+.borderpane {
+	-fx-background-image: url(../images/cshs.jpg);
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: 600px 400px;
+}
+
+.schoolname {
+	-fx-font: 24px serif;
+	-fx-text-fill: white;
+}
+
+.schoollogo {
+	-fx-image: url(../images/cshs_logo.png);
+}
+
+.proceedbtn {
+	-fx-background-color: #fff;
+}
+
+.proceedbtn:hover {
+	-fx-background-color: yellow;
+	-fx-cursor: hand;
+}
