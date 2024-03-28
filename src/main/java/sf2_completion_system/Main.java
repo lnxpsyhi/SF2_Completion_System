@@ -50,7 +50,7 @@ public class Main extends Application {
 		scene.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-				scene.setCursor(Cursor.OPEN_HAND);
+				
 				xOffset = event.getSceneX();
 				yOffset = event.getSceneY();
 			}
@@ -60,6 +60,7 @@ public class Main extends Application {
 			@Override
 			public void handle(MouseEvent event) {
 				// TODO Auto-generated method stub
+				scene.setCursor(Cursor.OPEN_HAND);
 				primaryStage.setX(event.getScreenX() - xOffset);
 				primaryStage.setY(event.getScreenY() - yOffset);
 			}
