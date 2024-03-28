@@ -50,10 +50,15 @@
 	-fx-background-color: rgba(23, 0, 226, 1);
 	-fx-background-radius: 8px; 
 	-fx-text-fill: #fff;
+	-fx-border-color: #fff;
 	-fx-border-radius: 8px;
 	-fx-border-style: solid;
+	-fx-padding: 10px;
+	-fx-pref-width: 150px;
+	-fx-font-family: Verdana;
 }
 
 .btn1:hover {
 	-fx-cursor: hand;
+	-fx-background-color: darkblue;
 }
