@@ -6,6 +6,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -49,6 +50,7 @@ public class Main extends Application {
 		scene.setOnMousePressed(new EventHandler<MouseEvent>() {
 		    @Override
 		    public void handle(MouseEvent event) {
+		    	scene.setCursor(Cursor.OPEN_HAND);
 		        xOffset = event.getSceneX();
 		        yOffset = event.getSceneY();
 		    }
@@ -61,6 +63,15 @@ public class Main extends Application {
 				primaryStage.setX(event.getScreenX() - xOffset);
 				primaryStage.setY(event.getScreenY() - yOffset);
 			}
+		});
+		scene.setOnMouseReleased(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+				scene.setCursor(Cursor.DEFAULT);
+			}
+			
 		});
         primaryStage.setScene(scene);
         primaryStage.setTitle("Student Form 2 Completion System");
