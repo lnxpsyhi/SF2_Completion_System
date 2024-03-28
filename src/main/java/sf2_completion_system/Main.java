@@ -4,16 +4,21 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
+	
+	private double xOffset;
+	private double yOffset;
 	
 	private static final File IMGICON = new File("src/main/resources/images/file.png");
 	
@@ -41,10 +46,25 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		scene = new Scene(loadFXML("sf2"));
+		scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+		    @Override
+		    public void handle(MouseEvent event) {
+		        xOffset = event.getSceneX();
+		        yOffset = event.getSceneY();
+		    }
+		});
+		scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+				// TODO Auto-generated method stub
+				primaryStage.setX(event.getScreenX() - xOffset);
+				primaryStage.setY(event.getScreenY() - yOffset);
+			}
+		});
         primaryStage.setScene(scene);
         primaryStage.setTitle("Student Form 2 Completion System");
         primaryStage.getIcons().add(new Image(new FileInputStream(IMGICON)));
-        primaryStage.setResizable(false);
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
 	}

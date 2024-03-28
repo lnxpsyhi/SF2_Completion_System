@@ -41,3 +41,20 @@
 .rightpane {
 	-fx-background-color: rgba(15, 7, 88, 1); 
 }
+
+.btncontainer1 {
+	-fx-background-color: rgba(27, 17, 84, 1); 
+}
+
+.btn1 {
+	-fx-background-color: rgba(23, 0, 226, 1);
+	-fx-background-radius: 8px; 
+	-fx-text-fill: #fff;
+	-fx-border-radius: 8px;
+	-fx-border-style: solid;
+	-fx-cursor: pointer; 
+}
+
+.btn1:hover {
+	-fx-cursor:;
+}
