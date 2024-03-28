@@ -45,7 +45,7 @@ public class Main extends Application {
         primaryStage.setTitle("Student Form 2 Completion System");
         primaryStage.getIcons().add(new Image(new FileInputStream(IMGICON)));
         primaryStage.setResizable(false);
-        primaryStage.initStyle(StageStyle.UTILITY);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
 	}
 	

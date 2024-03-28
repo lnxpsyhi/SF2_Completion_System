@@ -12,4 +12,5 @@ module SF2_Completion_System {
 	requires javafx.fxml;
 	requires transitive javafx.graphics;
 	requires org.apache.poi.poi;
+	requires org.apache.poi.ooxml;
 }
