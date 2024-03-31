@@ -1,4 +1,4 @@
-module SF2_Completion_System {
+module sf2_completion_system {
 	
 	opens sf2_completion_system to javafx.fxml;
 	
