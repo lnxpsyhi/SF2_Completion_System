@@ -241,6 +241,18 @@ public class CountStatistics {
                     		 currentCell.setCellValue(getPercentageMonthTotal());
                     		 break;
                     	 }
+                     } else if (rowIteration == 7) {
+                    	 switch (cellIteration) {
+                    	 case 1: 
+                    		 currentCell.setCellValue(cb.getConsecutiveAbsencesBoys());
+                    		 break;
+                    	 case 2: 
+                    		 currentCell.setCellValue(cg.getConsecutiveAbsencesGirls());
+                    		 break;
+                    	 case 3:
+                    		 currentCell.setCellValue(cb.getConsecutiveAbsencesBoys() + cg.getConsecutiveAbsencesGirls());
+                    		 break;
+                    	 }
                      }
                           
                      

@@ -23,6 +23,9 @@ public class CountGirls {
 	CountDates cd = new CountDates();
 	CountStudents cs = new CountStudents();
 	
+	private int consecutiveAbsencesGirls = 0;
+	private int consecutiveCount = 0;
+	
     private int girlsTotalAbsences = 0;
 	
     private ArrayList<Integer> girlsTotalPerDay = new ArrayList<Integer>();
@@ -42,7 +45,9 @@ public class CountGirls {
 	public int getGirlsTotalPresences() {
 		return girlsTotalPresences;
 	}
-	
+    public int getConsecutiveAbsencesGirls() {
+		return consecutiveAbsencesGirls;
+	}
 	public void countGirls(String path, String coordinates, String dateCoordinates, int sheetNo) {
 		cd.countDates(path, dateCoordinates, sheetNo);
 		cs.countStudents(path, coordinates, sheetNo);
@@ -73,7 +78,7 @@ public class CountGirls {
                 	int studentPresences = cd.getNumberOfDates();
                 	
                
-                	
+                	boolean alreadyIncremented = false;
                 	for (int cell = start.getCol(); cell <= end.getCol(); cell++) {
                 		cellIteration++;
                 		Cell currentCell = currentRow.getCell(cell);
@@ -130,7 +135,16 @@ public class CountGirls {
                             	
                             }
                         }    
-                        
+                       
+                        if (rowIteration > cs.getBoysNumber() + 1 && rowIteration < cs.getBoysNumber() + cs.getGirlsNumber() + 1 && cellIteration > 2 && cellIteration < 28 && currentCell.getStringCellValue().trim().equalsIgnoreCase("x")) {
+                        	consecutiveCount++;
+                        	if (consecutiveCount == 5 && !alreadyIncremented) { 
+                     		   consecutiveAbsencesGirls++;
+                     		   alreadyIncremented = true;
+                     	   }
+                        } else {
+                     	   consecutiveCount = 0;
+                        }
                         
                 		if (rowIteration > cs.getBoysNumber() + 1 && rowIteration < cs.getBoysNumber() + cs.getGirlsNumber() + 1 && cellIteration > 2 && cellIteration < 28 && currentCell.getStringCellValue().trim().equalsIgnoreCase("x")) {
                 			studentAbsences++;
@@ -153,7 +167,7 @@ public class CountGirls {
                 	
                 	
                 }
-                
+                System.out.println(getConsecutiveAbsencesGirls());
             } else {
                 System.out.println("Invalid placeholder format");
             }

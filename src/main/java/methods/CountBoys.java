@@ -20,10 +20,14 @@ public class CountBoys {
 	private Workbook workbook;
 	private Sheet sheet;
 	
-
+	
 	CountDates cd = new CountDates();
 	CountStudents cs = new CountStudents();
 
+	
+	private int consecutiveAbsencesBoys = 0;
+	private int consecutiveCount = 0;
+	
 	private ArrayList<Integer> boysTotalPerDay = new ArrayList<Integer>();
 	
 	private int boysTotalAbsences = 0;
@@ -43,7 +47,9 @@ public class CountBoys {
 	public int getBoysTotalPresences() {
 		return boysTotalPresences;
 	}
-	
+	public int getConsecutiveAbsencesBoys() {
+		return consecutiveAbsencesBoys;
+	}
 
 	
 	public void countBoys(String path, String coordinates, String dateCoordinates, int sheetNo) {
@@ -76,7 +82,7 @@ public class CountBoys {
                 	int studentPresences = cd.getNumberOfDates();
                 	
                
-                	
+                	boolean alreadyIncremented = false;
                 	for (int cell = start.getCol(); cell <= end.getCol(); cell++) {
                 		cellIteration++;
                 		Cell currentCell = currentRow.getCell(cell);
@@ -125,7 +131,6 @@ public class CountBoys {
                                 }
                                 if (rowPerDayIteration == cs.getBoysNumber() + 1) {
                                     currentCell2.setCellValue(presencePerDay);
-//                                    System.out.println(currentCell2.getNumericCellValue() + ": " + currentCell2.getAddress());
                                 }
                  
                                
@@ -135,7 +140,15 @@ public class CountBoys {
                             }
                         }
                         
-                       
+                       if (rowIteration <= cs.getBoysNumber() && cellIteration > 2 && cellIteration < 28 && currentCell.getStringCellValue().trim().equalsIgnoreCase("x")) {
+                    	   consecutiveCount++;
+                    	   if (consecutiveCount == 5 && !alreadyIncremented) {
+                    		   consecutiveAbsencesBoys++;
+                    		   alreadyIncremented = true;
+                    	   }
+                       } else {
+                    	   consecutiveCount = 0;
+                       }
                         
                 		if (rowIteration <= cs.getBoysNumber() && cellIteration > 2 && cellIteration < 28 && currentCell.getStringCellValue().trim().equalsIgnoreCase("x")) {
                 			studentAbsences++;
@@ -158,7 +171,7 @@ public class CountBoys {
                 	
                 	
                 }
-                
+                System.out.println(getConsecutiveAbsencesBoys());
             } else {
                 System.out.println("Invalid placeholder format");
             }
