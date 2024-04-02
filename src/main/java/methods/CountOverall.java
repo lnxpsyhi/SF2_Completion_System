@@ -87,6 +87,7 @@ public class CountOverall {
                         
                         if (mergedRegion != null) {
                             cell = mergedRegion.getLastColumn();
+                            row = mergedRegion.getLastRow();
                         } 		
                         
                         if (rowIteration == cs.getBoysNumber() + cs.getGirlsNumber() + 3 && cellIteration > 2 + cd.getBlanks() && cellIteration <= 2 + cd.getBlanks() + cd.getNumberOfDates()) {
@@ -101,6 +102,8 @@ public class CountOverall {
                 		}                 			                        
                 	}    
                 }
+            } else {
+                System.out.println("Invalid placeholder format");
             }
            
             System.out.println(cb.getBoysTotalPerDay());

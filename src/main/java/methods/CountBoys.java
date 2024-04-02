@@ -92,6 +92,7 @@ public class CountBoys {
                         
                         if (mergedRegion != null) {
                             cell = mergedRegion.getLastColumn();
+                            row = mergedRegion.getLastRow();
                         }
                 		
                         if (cellIteration > 2 + cd.getBlanks() && cellIteration <= 2 + cd.getBlanks() + cd.getNumberOfDates()) {
@@ -158,6 +159,8 @@ public class CountBoys {
                 	
                 }
                 
+            } else {
+                System.out.println("Invalid placeholder format");
             }
            
             

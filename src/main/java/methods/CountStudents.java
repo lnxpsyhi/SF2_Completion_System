@@ -88,7 +88,9 @@ public class CountStudents {
                 	}
                 }
                 	
-            } 	
+            } else {
+                System.out.println("Invalid placeholder format");
+            }
 		} catch (IOException e) {
 			System.out.println(e);
 		}

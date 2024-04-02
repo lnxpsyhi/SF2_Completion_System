@@ -66,6 +66,7 @@ public class CountDates {
                         
                         if (mergedRegion != null) {
                             cell = mergedRegion.getLastColumn();
+                            row = mergedRegion.getLastRow();
                         }
                		
                        if (currentCell == null || currentCell.getCellType() == CellType.BLANK) {
