@@ -39,6 +39,10 @@ public class CountStatistics {
 	private double averageGirls = 0;
 	private double averageTotal = 0;
 	
+	private double percentageMonthBoys = 0;
+	private double percentageMonthGirls = 0;
+	private double percentageMonthTotal = 0;
+	
 	public int getEnrolmentBoys() {
 		return enrolmentBoys;
 	}
@@ -86,6 +90,18 @@ public class CountStatistics {
     public double getAverageTotal() {
         return averageTotal;
     }
+    
+    public double getPercentageMonthBoys() {
+        return percentageMonthBoys;
+    }
+
+    public double getPercentageMonthGirls() {
+        return percentageMonthGirls;
+    }
+
+    public double getPercentageMonthTotal() {
+        return percentageMonthTotal;
+    }
 	
 	public void setLateEnrolmentBoys(int lateEnrolmentBoys) {
 		this.lateEnrolmentBoys = lateEnrolmentBoys;
@@ -119,6 +135,10 @@ public class CountStatistics {
 			averageGirls = cg.getGirlsTotalPresences() / cd.getNumberOfDates();
 			averageTotal = co.getOverallPresences() / cd.getNumberOfDates();
 					
+			percentageMonthBoys = averageBoys / cs.getBoysNumber() * 100;
+			percentageMonthGirls = averageGirls / cs.getGirlsNumber() * 100;
+			percentageMonthTotal = averageTotal / (cs.getBoysNumber() + cs.getGirlsNumber()) * 100;
+			
 			int colonIndex = statsCoordinates.indexOf(":");
 			
 			if (colonIndex != -1) {
@@ -209,7 +229,19 @@ public class CountStatistics {
                     		 currentCell.setCellValue(getAverageTotal());
                     		 break;
                     	 }
-                     } 
+                     } else if (rowIteration == 6) {
+                    	 switch (cellIteration) {
+                    	 case 1:
+                    		 currentCell.setCellValue(getPercentageMonthBoys());
+                    		 break;
+                    	 case 2:
+                    		 currentCell.setCellValue(getPercentageMonthGirls());
+                    		 break;
+                    	 case 3:
+                    		 currentCell.setCellValue(getPercentageMonthTotal());
+                    		 break;
+                    	 }
+                     }
                           
                      
                 }
