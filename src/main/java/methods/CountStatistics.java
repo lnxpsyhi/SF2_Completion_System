@@ -25,9 +25,19 @@ public class CountStatistics {
 	
 	private int enrolmentBoys = 0;
 	private int enrolmentGirls = 0;
+	private int enrolmentTotal = 0;
 	
 	private int lateEnrolmentBoys = 0;
 	private int lateEnrolmentGirls = 0;
+	private int lateEnrolmentTotal = getLateEnrolmentBoys() + getLateEnrolmentGirls();
+	
+	private int percentageBoys = 0;
+	private int percentageGirls = 0;
+	private int percentageTotal = 0;
+	
+	private double averageBoys = 0;
+	private double averageGirls = 0;
+	private double averageTotal = 0;
 	
 	public int getEnrolmentBoys() {
 		return enrolmentBoys;
@@ -37,6 +47,10 @@ public class CountStatistics {
 		return enrolmentGirls;
 	}
 	
+	public int getEnrolmentTotal() {
+		return enrolmentTotal;
+	}
+	
 	public int getLateEnrolmentBoys() {
 		return lateEnrolmentBoys;
 	}
@@ -44,6 +58,34 @@ public class CountStatistics {
 	public int getLateEnrolmentGirls() {
 		return lateEnrolmentGirls;
 	}
+	
+	public int getLateEnrolmentTotal() {
+		return lateEnrolmentTotal;
+	}
+	
+	public int getPercentageBoys() {
+        return percentageBoys;
+    }
+
+    public int getPercentageGirls() {
+        return percentageGirls;
+    }
+
+    public int getPercentageTotal() {
+        return percentageTotal;
+    }
+	
+    public double getAverageBoys() {
+        return averageBoys;
+    }
+
+    public double getAverageGirls() {
+        return averageGirls;
+    }
+    
+    public double getAverageTotal() {
+        return averageTotal;
+    }
 	
 	public void setLateEnrolmentBoys(int lateEnrolmentBoys) {
 		this.lateEnrolmentBoys = lateEnrolmentBoys;
@@ -67,7 +109,16 @@ public class CountStatistics {
 			
 			enrolmentBoys = cs.getBoysNumber() - getLateEnrolmentBoys();
 			enrolmentGirls = cs.getGirlsNumber() - getLateEnrolmentGirls();
+			enrolmentTotal = getEnrolmentBoys() + getEnrolmentGirls();
 			
+			percentageBoys = cs.getBoysNumber() / getEnrolmentBoys() * 100;
+			percentageGirls = cs.getGirlsNumber() / getEnrolmentGirls() * 100;
+			percentageTotal = (cs.getBoysNumber() + cs.getGirlsNumber()) / (getEnrolmentBoys() + getEnrolmentGirls()) * 100;
+			
+			averageBoys = cb.getBoysTotalPresences() / cd.getNumberOfDates();
+			averageGirls = cg.getGirlsTotalPresences() / cd.getNumberOfDates();
+			averageTotal = co.getOverallPresences() / cd.getNumberOfDates();
+					
 			int colonIndex = statsCoordinates.indexOf(":");
 			
 			if (colonIndex != -1) {
@@ -107,7 +158,7 @@ public class CountStatistics {
                     		 currentCell.setCellValue(getEnrolmentGirls());
                     		 break;
                     	 case 3:
-                    		 currentCell.setCellValue(getEnrolmentBoys() + getEnrolmentGirls());
+                    		 currentCell.setCellValue(getEnrolmentTotal());
                     		 break;
                     	 }
                      } else if (rowIteration == 2) {
@@ -119,7 +170,7 @@ public class CountStatistics {
                     		 currentCell.setCellValue(getLateEnrolmentGirls());
                     		 break;
                     	 case 3: 
-                    		 currentCell.setCellValue(getLateEnrolmentBoys() + getLateEnrolmentGirls());
+                    		 currentCell.setCellValue(getLateEnrolmentTotal());
                     		 break;
                     	 }
                      } else if (rowIteration == 3) {
@@ -137,18 +188,30 @@ public class CountStatistics {
                      } else if (rowIteration == 4) {
                     	 switch (cellIteration) {
                     	 case 1:
-                    		 currentCell.setCellValue(cs.getBoysNumber() / getEnrolmentBoys() * 100);
+                    		 currentCell.setCellValue(getPercentageBoys());
                     		 break;
                     	 case 2:
-                    		 currentCell.setCellValue(cs.getGirlsNumber() / getEnrolmentGirls() * 100);
+                    		 currentCell.setCellValue(getPercentageGirls());
                     		 break;
                     	 case 3:
-                    		 currentCell.setCellValue((cs.getBoysNumber() + cs.getGirlsNumber()) / (getEnrolmentBoys() + getEnrolmentGirls()) * 100);
+                    		 currentCell.setCellValue(getPercentageTotal());
                     		 break;
                     	 }
-                     }
+                     } else if (rowIteration == 5) {
+                    	 switch (cellIteration) {
+                    	 case 1: 
+                    		 currentCell.setCellValue(getAverageBoys());
+                    		 break;
+                    	 case 2:
+                    		 currentCell.setCellValue(getAverageGirls());
+                    		 break;
+                    	 case 3:
+                    		 currentCell.setCellValue(getAverageTotal());
+                    		 break;
+                    	 }
+                     } 
                           
-                     System.out.println((cs.getBoysNumber() + cs.getGirlsNumber()) / (getEnrolmentBoys() + getEnrolmentGirls()) * 100);
+                     
                 }
                }
                 
