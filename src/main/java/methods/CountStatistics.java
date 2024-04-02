@@ -17,8 +17,25 @@ public class CountStatistics {
 	private Workbook workbook;
 	private Sheet sheet;
 	
+	CountStudents cs = new CountStudents();
+	CountBoys cb = new CountBoys();
+	CountGirls cg = new CountGirls();
+	CountDates cd = new CountDates();
+	CountOverall co = new CountOverall();
+	
+	private int enrolmentBoys = 0;
+	private int enrolmentGirls = 0;
+	
 	private int lateEnrolmentBoys = 0;
 	private int lateEnrolmentGirls = 0;
+	
+	public int getEnrolmentBoys() {
+		return enrolmentBoys;
+	}
+	
+	public int getEnrolmentGirls() {
+		return enrolmentGirls;
+	}
 	
 	public int getLateEnrolmentBoys() {
 		return lateEnrolmentBoys;
@@ -36,11 +53,7 @@ public class CountStatistics {
 		this.lateEnrolmentGirls = lateEnrolmentGirls;
 	}
 	
-	CountStudents cs = new CountStudents();
-	CountBoys cb = new CountBoys();
-	CountGirls cg = new CountGirls();
-	CountDates cd = new CountDates();
-	CountOverall co = new CountOverall();
+
 	public void countStatistics(String path, String coordinates, String dateCoordinates, int sheetNo, String statsCoordinates) {
 		cs.countStudents(path, coordinates, sheetNo);
 		cb.countBoys(path, coordinates, dateCoordinates, sheetNo);
@@ -51,6 +64,9 @@ public class CountStatistics {
 			inputStream = new FileInputStream(path);
 			workbook = WorkbookFactory.create(inputStream);
 			sheet = workbook.getSheetAt(sheetNo);
+			
+			enrolmentBoys = cs.getBoysNumber() - getLateEnrolmentBoys();
+			enrolmentGirls = cs.getGirlsNumber() - getLateEnrolmentGirls();
 			
 			int colonIndex = statsCoordinates.indexOf(":");
 			
@@ -85,13 +101,13 @@ public class CountStatistics {
                      if (rowIteration == 1) {
                     	 switch(cellIteration) {
                     	 case 1:
-                    		 currentCell.setCellValue(cs.getBoysNumber() - getLateEnrolmentBoys());
+                    		 currentCell.setCellValue(getEnrolmentBoys());
                     		 break;
                     	 case 2: 
-                    		 currentCell.setCellValue(cs.getGirlsNumber() - getLateEnrolmentGirls());
+                    		 currentCell.setCellValue(getEnrolmentGirls());
                     		 break;
                     	 case 3:
-                    		 currentCell.setCellValue((cs.getBoysNumber() - getLateEnrolmentBoys()) + (cs.getGirlsNumber() - getLateEnrolmentGirls()));
+                    		 currentCell.setCellValue(getEnrolmentBoys() + getEnrolmentGirls());
                     		 break;
                     	 }
                      } else if (rowIteration == 2) {
@@ -121,18 +137,18 @@ public class CountStatistics {
                      } else if (rowIteration == 4) {
                     	 switch (cellIteration) {
                     	 case 1:
-                    		 currentCell.setCellValue(cs.getBoysNumber() / (cs.getBoysNumber() - getLateEnrolmentBoys()) * 100);
+                    		 currentCell.setCellValue(cs.getBoysNumber() / getEnrolmentBoys() * 100);
                     		 break;
                     	 case 2:
-                    		 currentCell.setCellValue(cs.getGirlsNumber() / (cs.getGirlsNumber() - getLateEnrolmentGirls()) * 100);
+                    		 currentCell.setCellValue(cs.getGirlsNumber() / getEnrolmentGirls() * 100);
                     		 break;
                     	 case 3:
-                    		 currentCell.setCellValue((cs.getBoysNumber() + cs.getGirlsNumber()) / (cs.getBoysNumber() - getLateEnrolmentBoys()) + (cs.getGirlsNumber() - getLateEnrolmentGirls()) * 100);
+                    		 currentCell.setCellValue((cs.getBoysNumber() + cs.getGirlsNumber()) / (getEnrolmentBoys() + getEnrolmentGirls()) * 100);
                     		 break;
                     	 }
                      }
                           
-                     System.out.println((cs.getBoysNumber() + cs.getGirlsNumber()) / (cs.getBoysNumber() - getLateEnrolmentBoys()) + (cs.getGirlsNumber() - getLateEnrolmentGirls()));
+                     System.out.println((cs.getBoysNumber() + cs.getGirlsNumber()) / (getEnrolmentBoys() + getEnrolmentGirls()) * 100);
                 }
                }
                 
