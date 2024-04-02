@@ -38,8 +38,6 @@ public class Main extends Application {
 
 		launch(args);
 
-		// CountOverall co = new CountOverall();
-		// co.countOverallTotalAbsences(PATH, "A18:BO78", "K16:BH16", 1);
 
 	}
 
@@ -75,7 +73,7 @@ public class Main extends Application {
 
 		});
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Student Form 2 Completion System");
+		primaryStage.setTitle("School Form 2 Completion System");
 		primaryStage.getIcons().add(new Image(new FileInputStream(IMGICON)));
 		primaryStage.initStyle(StageStyle.UNDECORATED);
 		primaryStage.show();
