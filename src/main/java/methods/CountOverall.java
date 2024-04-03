@@ -4,6 +4,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -23,6 +27,8 @@ public class CountOverall {
 	CountGirls cg = new CountGirls();
 	CountDates cd = new CountDates();
 	
+	Map<String, Integer> mostAbsencesOverall = new LinkedHashMap<>();
+	
 	private int overallAbsences = 0;
 	private int overallPresences = 0;
 	private ArrayList<Integer> combinedTotalPerDay = new ArrayList<Integer>(); 
@@ -38,7 +44,9 @@ public class CountOverall {
 	public int getOverallAbsences() {
 		return overallAbsences;
 	}
-	
+	public Map<String, Integer> getMostAbsencesOverall() {
+		return mostAbsencesOverall;
+	}
 	public void countOverallTotalAbsences(String path, String coordinates, String dateCoordinates, int sheetNo) {
 		cs.countStudents(path, coordinates, sheetNo);
 		cb.countBoys(path, coordinates, dateCoordinates, sheetNo);
@@ -92,7 +100,6 @@ public class CountOverall {
                         
                         if (rowIteration == cs.getBoysNumber() + cs.getGirlsNumber() + 3 && cellIteration > 2 + cd.getBlanks() && cellIteration <= 2 + cd.getBlanks() + cd.getNumberOfDates()) {
                         	currentCell.setCellValue(combinedTotalPerDay.get(count));
-                        	System.out.println(combinedTotalPerDay.get(count));
                         	count++;
                         } else
                         	if (rowIteration == cs.getBoysNumber() + cs.getGirlsNumber() + 3 && cellIteration == 28) {
@@ -105,15 +112,24 @@ public class CountOverall {
             } else {
                 System.out.println("Invalid placeholder format");
             }
-           
-            System.out.println(cb.getBoysTotalPerDay());
-    		System.out.println(cg.getGirlsTotalPerDay());
-    		System.out.println(getCombinedTotalPerDay());
+           attendanceTracker();
             try (FileOutputStream fileout = new FileOutputStream(path)) {
                 workbook.write(fileout);
             }
 		} catch (IOException e) {
 			System.out.println(e);
 		}
+	}
+	public void attendanceTracker() {
+		
+		HashMap<String, Integer> temporary = new HashMap<>();
+		temporary.putAll(cb.getMostAbsencesBoys());
+		temporary.putAll(cg.getMostAbsencesGirls());
+		
+		temporary.entrySet().stream()
+        .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+        .forEachOrdered(x -> mostAbsencesOverall.put(x.getKey(), x.getValue()));
+		
+		System.out.println(getMostAbsencesOverall());
 	}
 }

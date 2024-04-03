@@ -36,7 +36,7 @@ public class CountBoys {
 	private ArrayList<Integer> boysTotalPerDay = new ArrayList<Integer>();
 	private HashMap<String, Integer> boysRecord = new HashMap<>();
 	private ArrayList<String> perfectAttendanceBoys = new ArrayList<String>();
-    Map<String, Integer> mostAbsencesBoys = new LinkedHashMap<>();
+    private Map<String, Integer> mostAbsencesBoys = new LinkedHashMap<>();
 
 	private int boysTotalAbsences = 0;
 	
@@ -237,7 +237,7 @@ public class CountBoys {
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEachOrdered(x -> mostAbsencesBoys.put(x.getKey(), x.getValue()));
         
-        System.out.println(getMostAbsencesBoys());
+       
         
 	}
 }

@@ -233,6 +233,6 @@ public class CountGirls {
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEachOrdered(x -> mostAbsencesGirls.put(x.getKey(), x.getValue()));
         
-        System.out.println(getMostAbsencesGirls());
+  
 	}
 }
