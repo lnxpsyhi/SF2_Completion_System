@@ -1,16 +1,18 @@
 package sf2_completion_system;
 
-import methods.CountDates;
-import methods.CountStatistics;
+import methods.CountBoys;
+import methods.CountGirls;
 
 public class test {
 
 	public static void main(String[] args) {
 		String PATH = "/home/akira/Desktop/Sheets/HTML(copy).xls";
-		CountStatistics cstats = new CountStatistics();
-		CountDates cd = new CountDates();
-		cd.countDates(PATH, "K16:BH16", 1);
-		cstats.countStatistics(PATH, "A18:BO78", "K16:BH16", 1, "BU81:CA97");
+//		CountStatistics cstats = new CountStatistics();
+//		cstats.countStatistics(PATH, "A18:BO78", "K16:BH16", 1, "BU81:CA97");
+		CountBoys cb = new CountBoys();
+		cb.countBoys(PATH, "A18:BO78", "K16:BH16", 1);
+		CountGirls cg = new CountGirls();
+		cg.countGirls(PATH, "A18:BO78", "K16:BH16", 1);
 
 	}
 

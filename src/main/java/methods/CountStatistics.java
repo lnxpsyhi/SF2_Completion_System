@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -264,6 +266,7 @@ public class CountStatistics {
             }
 			try (FileOutputStream fileout = new FileOutputStream(path)) {
                 workbook.write(fileout);
+                JOptionPane.showMessageDialog(null, "Done calculating!");
             }
 		} catch (IOException e) {
 			System.out.println(e);

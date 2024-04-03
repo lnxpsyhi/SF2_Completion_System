@@ -4,6 +4,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -23,12 +28,18 @@ public class CountGirls {
 	CountDates cd = new CountDates();
 	CountStudents cs = new CountStudents();
 	
+	private ArrayList<Integer> girlsTotalPerDay = new ArrayList<Integer>();
+	private HashMap<String, Integer> girlsRecord = new HashMap<>();
+	private ArrayList<String> perfectAttendanceGirls = new ArrayList<String>();
+    Map<String, Integer> mostAbsencesGirls = new LinkedHashMap<>();
+
+	
 	private int consecutiveAbsencesGirls = 0;
 	private int consecutiveCount = 0;
 	
     private int girlsTotalAbsences = 0;
 	
-    private ArrayList<Integer> girlsTotalPerDay = new ArrayList<Integer>();
+    
     
     public int getGirlsTotalPerDay(int i) {
     	return girlsTotalPerDay.get(i);
@@ -48,6 +59,13 @@ public class CountGirls {
     public int getConsecutiveAbsencesGirls() {
 		return consecutiveAbsencesGirls;
 	}
+    public ArrayList<String> getPerfectAttendanceGirls() {
+		return perfectAttendanceGirls;
+	}
+	public Map<String, Integer> getMostAbsencesGirls() {
+		return mostAbsencesGirls;
+	}
+		
 	public void countGirls(String path, String coordinates, String dateCoordinates, int sheetNo) {
 		cd.countDates(path, dateCoordinates, sheetNo);
 		cs.countStudents(path, coordinates, sheetNo);
@@ -77,7 +95,7 @@ public class CountGirls {
                 	int studentAbsences = 0;
                 	int studentPresences = cd.getNumberOfDates();
                 	
-               
+                	String name = "";
                 	boolean alreadyIncremented = false;
                 	for (int cell = start.getCol(); cell <= end.getCol(); cell++) {
                 		cellIteration++;
@@ -97,6 +115,10 @@ public class CountGirls {
                             row = mergedRegion.getLastRow();
                         }
                 		
+                        if (cellIteration == 2 && rowIteration > cs.getBoysNumber() + 1 && rowIteration <= cs.getBoysNumber() + cs.getGirlsNumber() + 1) {
+                        	name = currentCell.getStringCellValue();
+                        }
+                        
                         if (cellIteration > 2 + cd.getBlanks() && cellIteration <= 2 + cd.getBlanks() + cd.getNumberOfDates()) {
                             int rowPerDayIteration = 0;
                             int presencePerDay = 0;
@@ -126,7 +148,6 @@ public class CountGirls {
                                 }
                                 if (rowPerDayIteration == cs.getBoysNumber() + cs.getGirlsNumber() + 2) {
                                     currentCell2.setCellValue(presencePerDay);
-//                                    System.out.println(currentCell2.getNumericCellValue() + ": " + currentCell2.getAddress());
                                     
                                 }
                             }
@@ -164,10 +185,13 @@ public class CountGirls {
                 		}
                 		
                 	}
+                	if (name != "") {
+                		girlsRecord.put(name, studentAbsences);
+                	}
                 	
                 	
                 }
-                System.out.println(getConsecutiveAbsencesGirls());
+                attendanceTracker();
             } else {
                 System.out.println("Invalid placeholder format");
             }
@@ -179,5 +203,36 @@ public class CountGirls {
 		} catch (IOException e) {
 			System.out.println(e);
 		}
+	}
+	public void attendanceTracker() {
+	    PriorityQueue<Map.Entry<String, Integer>> top5 = new PriorityQueue<>(Map.Entry.comparingByValue());
+
+
+	    for (Map.Entry<String, Integer> entry : girlsRecord.entrySet()) {
+	        int value = entry.getValue();
+	        if (value == 0) {
+	            perfectAttendanceGirls.add(entry.getKey());
+
+	        } else {
+	            top5.offer(entry);
+	            if (top5.size() > 5) {
+	                top5.poll();
+	            }
+	        }
+	    }
+
+
+		HashMap<String, Integer> temporary = new HashMap<>();
+
+	    while (!top5.isEmpty()) {
+	        Map.Entry<String, Integer> entry = top5.poll();
+	        temporary.put(entry.getKey(), entry.getValue());
+	    }
+
+        temporary.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> mostAbsencesGirls.put(x.getKey(), x.getValue()));
+        
+        System.out.println(getMostAbsencesGirls());
 	}
 }
