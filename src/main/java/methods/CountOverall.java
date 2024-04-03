@@ -28,6 +28,7 @@ public class CountOverall {
 	CountDates cd = new CountDates();
 	
 	Map<String, Integer> mostAbsencesOverall = new LinkedHashMap<>();
+	ArrayList<String> perfectAttendanceOverall = new ArrayList<String>();
 	
 	private int overallAbsences = 0;
 	private int overallPresences = 0;
@@ -46,6 +47,9 @@ public class CountOverall {
 	}
 	public Map<String, Integer> getMostAbsencesOverall() {
 		return mostAbsencesOverall;
+	}
+	public ArrayList<String> getPerfectAttendanceOverall() {
+		return perfectAttendanceOverall;
 	}
 	public void countOverallTotalAbsences(String path, String coordinates, String dateCoordinates, int sheetNo) {
 		cs.countStudents(path, coordinates, sheetNo);
@@ -130,6 +134,9 @@ public class CountOverall {
         .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
         .forEachOrdered(x -> mostAbsencesOverall.put(x.getKey(), x.getValue()));
 		
-		System.out.println(getMostAbsencesOverall());
+		perfectAttendanceOverall.addAll(cb.getPerfectAttendanceBoys());
+		perfectAttendanceOverall.addAll(cg.getPerfectAttendanceGirls());
+		System.out.println("Most absences: " + getMostAbsencesOverall());
+		System.out.println("Perfect Attendance: " + getPerfectAttendanceOverall());
 	}
 }
