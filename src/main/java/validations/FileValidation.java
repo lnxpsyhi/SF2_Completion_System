@@ -7,15 +7,16 @@ import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-public class FileValidation  {
-	
+public class FileValidation {
+
 	// check if the file is a valid excel file if not return nulls
-	public File isExcel(File file) {
+	public boolean isExcel(File file) {
 		try (Workbook wb = WorkbookFactory.create(file)) {
-			return file;
-		} catch (EncryptedDocumentException | IOException e) {
+			return true;
+		} catch (EncryptedDocumentException | IOException  | NullPointerException e) {
 			// TODO Auto-generated catch block
-			return null;
+			return false;
 		}
+
 	}
 }

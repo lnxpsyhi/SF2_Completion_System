@@ -5,12 +5,11 @@ module sf2_completion_system {
 	exports sf2_completion_system;
 	exports methods;
 	
-	
 	requires java.desktop;
+	requires java.base;
 	requires transitive javafx.controls;
 	requires javafx.fxml;
 	requires org.apache.poi.poi;
 	requires org.apache.poi.ooxml;
-	requires javafx.graphics;
 	requires javafx.base;
 }

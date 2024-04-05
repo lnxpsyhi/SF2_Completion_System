@@ -15,18 +15,30 @@ import javafx.stage.Stage;
 
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 
 public class SheetSelectionController implements Initializable {
+	
+	private String filePath = "";
 
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
     @FXML
     private VBox sheetButtonsContainer; 
 
+    
+    
     Parent root;
     Stage stage;
     Scene scene;
     
+  
     public void goBack(MouseEvent event) throws IOException {
 		root = FXMLLoader.load(getClass().getResource("/fxml/FileSelection.fxml"));
 		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
@@ -37,18 +49,23 @@ public class SheetSelectionController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String filePath = "/home/akira/Downloads/School-Forms-1-7.xlsx";
-        try {
-            FileInputStream fis = new FileInputStream(filePath);
-            Workbook workbook = WorkbookFactory.create(fis);
+        generateSheets(getFilePath());
+    }
 
-            int numberOfSheets = workbook.getNumberOfSheets();
-            for (int i = 0; i < numberOfSheets; i++) {
-                String sheetName = workbook.getSheetName(i);
-                addButtonForSheet(sheetName);
-            }
+    public void generateSheets(String filePath) {
+    	try {
+            if (filePath != null && !filePath.isEmpty()) {
+                FileInputStream fis = new FileInputStream(getFilePath());
+                Workbook workbook = WorkbookFactory.create(fis);
 
-            workbook.close();
+                int numberOfSheets = workbook.getNumberOfSheets();
+                for (int i = 0; i < numberOfSheets; i++) {
+                    String sheetName = workbook.getSheetName(i);
+                    addButtonForSheet(sheetName);
+                }
+   
+                workbook.close();
+            } 
         } catch (IOException e) {
             e.printStackTrace();
         }
