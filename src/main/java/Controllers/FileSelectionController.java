@@ -20,7 +20,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
-import sf2_completion_system.DataStore;
+
 import validations.FileValidation;
 
 public class FileSelectionController implements Initializable {
@@ -28,10 +28,10 @@ public class FileSelectionController implements Initializable {
 	private FileChooser fileChooser = new FileChooser();
 	private Alert alert = null;
 	private FileValidation fv = new FileValidation();
-	private boolean alreadyPicked = false;
 	private File f;
 	private String filePath = "";
-	DataStore ds = new DataStore();
+	private boolean proceedButtonGenerated = false;
+	
 	RunAutomationController ra = new RunAutomationController();
 	@FXML
 	private TextField filePathField;
@@ -42,12 +42,10 @@ public class FileSelectionController implements Initializable {
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
-
 	
 	public String getFilePath() {
 		return filePath;
 	}
-
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
@@ -55,18 +53,14 @@ public class FileSelectionController implements Initializable {
 	
 	@FXML
 	private void chooseFile() throws IOException {
-
-	   
+		Button button = null;
 		    f = fileChooser.showOpenDialog(null);
 
 		    if (f != null) {	    	
 			  if (fv.isExcel(f)) {
 				  
-				  
-				  
 			      filePathField.setText(f.getAbsolutePath());
 			      System.out.println(f.getAbsolutePath());
-			      alreadyPicked = true;
 		    } else {
 		        alert = new Alert(Alert.AlertType.ERROR, "Please select a valid excel file.");
 		        alert.setHeaderText("Invalid File!");
@@ -75,20 +69,6 @@ public class FileSelectionController implements Initializable {
 		    } else {
 		        System.out.println("Canceled");
 		    }
-		    
-		    if (alreadyPicked) {
-		        Button button = new Button("Proceed");
-		        button.setOnAction(event -> {
-		            try {
-		                goToSheetSelection(event);
-		            } catch (IOException e) {
-		                e.printStackTrace();
-		            }
-		        });
-		        btncontainer1.getChildren().add(button);
-		    }
-
-		   
 	}
 	
 	public void goBack(MouseEvent event) throws IOException {
@@ -100,24 +80,25 @@ public class FileSelectionController implements Initializable {
 	}
 	
 	public void goToSheetSelection(ActionEvent event) throws IOException {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SheetSelection.fxml"));
-	    root = loader.load(); 
-	    SheetSelectionController controller = loader.getController(); 
+	    if (filePathField.getText() != "") {
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SheetSelection.fxml"));
+		    root = loader.load(); 
+		    SheetSelectionController controller = loader.getController(); 
+			    
+		    controller.setFilePath(filePathField.getText());
+		    controller.generateSheets(filePathField.getText());
 		    
-	    controller.setFilePath(filePathField.getText());
-	    controller.generateSheets(filePathField.getText());
-	    
-	    stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-	    scene = new Scene(root);
-	    stage.setScene(scene);
-	    stage.show();
+		    stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		    scene = new Scene(root);
+		    stage.setScene(scene);
+		    stage.show();
+	    } else {
+	        alert = new Alert(Alert.AlertType.ERROR, "Please select a valid excel file.");
+	        alert.setHeaderText("No file path selected");
+	        alert.showAndWait();
+	    }
 
 	}
-
-	public void passFilePath() throws IOException {
-	
-	}
-
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -126,7 +107,5 @@ public class FileSelectionController implements Initializable {
 		fileChooser.getExtensionFilters().add(excelFilter);
 		fileChooser.getExtensionFilters().add(all);
 	}
-
-
 
 }
