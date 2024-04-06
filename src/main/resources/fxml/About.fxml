@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../stylesheet/AboutStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AboutController">
+   <center>
+      <BorderPane styleClass="borderpane" BorderPane.alignment="CENTER">
+          <top>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="800.0" spacing="2.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="33.0" prefWidth="267.0" styleClass="label1" text="About this Application">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="450.0" right="10.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../images/back.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#goToAboutToolsSection" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/go.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="25.0" right="25.0" top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+   
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="750.0" styleClass="description" text="The Automated SF2 Completion System is the collaborative effort of &#10;Group 1 from Grade 12, Section BRIN, at Cainta Senior High School for &#10;the academic year 2023-2024. It represents the final project for the Java &#10;Programming subject and Practical Research 2. The primary focus is on &#10;automating student attendance analytics, specifically designed to &#10;accelerate administrative processes associated with School Form 2 (SF2)." />
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="750.0" styleClass="header1" text="Contributors:" />
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="750.0" styleClass="header2" text="Software Developers:" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="names" text="E-Jhay M. Esplana">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="542.0" styleClass="namesDescription" text="Algorithm scripting, UI design/development, and Structure design." />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="names" text="Rommel V. Matic">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="553.0" styleClass="namesDescription" text="UI design/development, Validation, Configuration " />
+                     </children>
+                  </HBox>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="750.0" styleClass="header2" text="Media and Documentation:" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="names" text="John Jacob I. Javier">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="532.0" styleClass="namesDescription" text="Leads research efforts and documentation." />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="names" text="Jeremiah Jireh C. Acosta">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="471.0" styleClass="namesDescription" text="Assists in research and handles media editing." />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="names" text="Jasper Adrian C. Mifaña">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="479.0" styleClass="namesDescription" text="Provides media sources and assists in documentation." />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </top>
+      </BorderPane>
+   </center>
+</BorderPane>

@@ -34,9 +34,9 @@ public class SheetSelectionController implements Initializable {
 
     
     
-    Parent root;
-    Stage stage;
-    Scene scene;
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
     
   
     public void goBack(MouseEvent event) throws IOException {
