@@ -13,7 +13,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -30,7 +29,6 @@ public class FileSelectionController implements Initializable {
 	private FileValidation fv = new FileValidation();
 	private File f;
 	private String filePath = "";
-	private boolean proceedButtonGenerated = false;
 	
 	RunAutomationController ra = new RunAutomationController();
 	@FXML
@@ -51,9 +49,13 @@ public class FileSelectionController implements Initializable {
 		this.filePath = filePath;
 	}
 	
+	public void fillField(String filePath) {
+		filePathField.setText(filePath);
+	}
+	
 	@FXML
 	private void chooseFile() throws IOException {
-		Button button = null;
+
 		    f = fileChooser.showOpenDialog(null);
 
 		    if (f != null) {	    	

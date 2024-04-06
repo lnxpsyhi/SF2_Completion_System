@@ -47,7 +47,10 @@ public class SheetSelectionController implements Initializable {
     private Button button;
   
     public void goBack(MouseEvent event) throws IOException {
-		root = FXMLLoader.load(getClass().getResource("/fxml/FileSelection.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FileSelection.fxml"));
+		root = loader.load();
+		FileSelectionController controller = loader.getController();
+		controller.fillField(getFilePath());
 		stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 	    scene = new Scene(root);
 	    stage.setScene(scene);
