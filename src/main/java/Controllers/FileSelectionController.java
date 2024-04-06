@@ -13,13 +13,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+
 import validations.FileValidation;
 
 public class FileSelectionController implements Initializable {
@@ -27,8 +27,10 @@ public class FileSelectionController implements Initializable {
 	private FileChooser fileChooser = new FileChooser();
 	private Alert alert = null;
 	private FileValidation fv = new FileValidation();
-	private boolean alreadyPicked = false;
+	private File f;
+	private String filePath = "";
 	
+	RunAutomationController ra = new RunAutomationController();
 	@FXML
 	private TextField filePathField;
 	
@@ -39,20 +41,28 @@ public class FileSelectionController implements Initializable {
 	private Stage stage;
 	private Scene scene;
 	
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+	
+	public void fillField(String filePath) {
+		filePathField.setText(filePath);
+	}
+	
 	@FXML
-	private void chooseFile() {
-		    
-		    File f = fileChooser.showOpenDialog(null);
-	    	
-		    
+	private void chooseFile() throws IOException {
+
+		    f = fileChooser.showOpenDialog(null);
 
 		    if (f != null) {	    	
-			    if (fv.isExcel(f)) {
-
-
-		        filePathField.setText(f.getAbsolutePath());
-		        System.out.println(f.getAbsolutePath());
-		        alreadyPicked = true;
+			  if (fv.isExcel(f)) {
+				  
+			      filePathField.setText(f.getAbsolutePath());
+			      System.out.println(f.getAbsolutePath());
 		    } else {
 		        alert = new Alert(Alert.AlertType.ERROR, "Please select a valid excel file.");
 		        alert.setHeaderText("Invalid File!");
@@ -61,20 +71,6 @@ public class FileSelectionController implements Initializable {
 		    } else {
 		        System.out.println("Canceled");
 		    }
-		    
-		    if (alreadyPicked) {
-		        Button button = new Button("Proceed");
-		        button.setOnAction(event -> {
-		            try {
-		                goToSheetSelection(event);
-		            } catch (IOException e) {
-		                e.printStackTrace();
-		            }
-		        });
-		        btncontainer1.getChildren().add(button);
-		    }
-
-		   
 	}
 	
 	public void goBack(MouseEvent event) throws IOException {
@@ -86,22 +82,25 @@ public class FileSelectionController implements Initializable {
 	}
 	
 	public void goToSheetSelection(ActionEvent event) throws IOException {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SheetSelection.fxml"));
-	    root = loader.load(); 
-	     
-	    SheetSelectionController controller = loader.getController(); 
-	    
+	    if (filePathField.getText() != "") {
+	    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SheetSelection.fxml"));
+		    root = loader.load(); 
+		    SheetSelectionController controller = loader.getController(); 
+			    
+		    controller.setFilePath(filePathField.getText());
+		    controller.generateSheets(filePathField.getText());
+		    
+		    stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		    scene = new Scene(root);
+		    stage.setScene(scene);
+		    stage.show();
+	    } else {
+	        alert = new Alert(Alert.AlertType.ERROR, "Please select a valid excel file.");
+	        alert.setHeaderText("No file path selected");
+	        alert.showAndWait();
+	    }
 
-	    controller.setFilePath(filePathField.getText());
-	    controller.generateSheets(filePathField.getText());
-	    
-	    stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-	    scene = new Scene(root);
-	    stage.setScene(scene);
-	    stage.show();
 	}
-
-
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -110,4 +109,5 @@ public class FileSelectionController implements Initializable {
 		fileChooser.getExtensionFilters().add(excelFilter);
 		fileChooser.getExtensionFilters().add(all);
 	}
+
 }
