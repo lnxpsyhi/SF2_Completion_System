@@ -1,8 +1,8 @@
 package sf2_completion_system;
 
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 	
@@ -25,6 +26,7 @@ public class Main extends Application {
 	
 	public void start(Stage stage) {
 		
+		// configuration
 		Properties config = new Properties();
 		try (InputStream istream = new FileInputStream("src/main/resources/config.properties")) {
 			config.load(istream);
@@ -65,7 +67,7 @@ public class Main extends Application {
 			stage.setScene(scene);
 			stage.setTitle("School Form 2 Completion System");
 			stage.getIcons().add(new Image(new FileInputStream(IMGICON)));
-			//stage.initStyle(StageStyle.UNDECORATED);
+			stage.initStyle(StageStyle.UNDECORATED);
 			stage.show();
 			
 		} catch (Exception e) {
