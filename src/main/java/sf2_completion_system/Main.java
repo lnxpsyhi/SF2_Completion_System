@@ -2,6 +2,10 @@ package sf2_completion_system;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -14,11 +18,24 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	
 	private double xOffset;
 	private double yOffset;
 	private static final File IMGICON = new File("src/main/resources/images/file.png");
 	
 	public void start(Stage stage) {
+		
+		Properties config = new Properties();
+		try (InputStream istream = new FileInputStream("src/main/resources/config.properties")) {
+			config.load(istream);
+			String test = config.getProperty("test");
+			System.out.println(test);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
 			Scene scene = new Scene(root);
