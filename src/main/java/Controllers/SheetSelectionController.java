@@ -2,6 +2,7 @@ package Controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,7 +23,8 @@ import java.io.IOException;
 public class SheetSelectionController implements Initializable {
 	
 	private String filePath = "";
-
+	private String sheetName = "";
+	
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
@@ -32,12 +34,17 @@ public class SheetSelectionController implements Initializable {
     @FXML
     private VBox sheetButtonsContainer; 
 
-    
+    public void setSheetName(String sheetName) {
+    	this.sheetName = sheetName;
+    }
+    public String getSheetName() {
+    	return sheetName;
+    }
     
     private Parent root;
     private Stage stage;
     private Scene scene;
-    
+    private Button button;
   
     public void goBack(MouseEvent event) throws IOException {
 		root = FXMLLoader.load(getClass().getResource("/fxml/FileSelection.fxml"));
@@ -70,14 +77,31 @@ public class SheetSelectionController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
-    private void addButtonForSheet(String sheetName) {
-        Button button = new Button(sheetName);
+    
+    private void addButtonForSheet(String sheetName)  {
+        button = new Button(sheetName);
         button.setOnAction(event -> {
-            
-            System.out.println("Button for sheet '" + sheetName + "' clicked!");
+        
+        setSheetName(sheetName);
+        System.out.println(getSheetName());
+        try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RunAutomation.fxml"));
+			root = loader.load();
+			RunAutomationController controller = loader.getController(); 
+            controller.setFilePath(getFilePath());
+            controller.setSheetName(getSheetName());
+			stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		    scene = new Scene(root);
+		    stage.setScene(scene);
+		    stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
         });
         sheetButtonsContainer.getChildren().add(button); 
     }
+    
+    
+    
 }

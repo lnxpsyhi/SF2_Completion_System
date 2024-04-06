@@ -48,7 +48,6 @@ public class Main extends Application {
 			stage.setScene(scene);
 			stage.setTitle("School Form 2 Completion System");
 			stage.getIcons().add(new Image(new FileInputStream(IMGICON)));
-			//stage.initStyle(StageStyle.UNDECORATED);
 			stage.show();
 			
 		} catch (Exception e) {

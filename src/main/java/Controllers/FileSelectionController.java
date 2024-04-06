@@ -20,6 +20,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import sf2_completion_system.DataStore;
 import validations.FileValidation;
 
 public class FileSelectionController implements Initializable {
@@ -28,7 +29,10 @@ public class FileSelectionController implements Initializable {
 	private Alert alert = null;
 	private FileValidation fv = new FileValidation();
 	private boolean alreadyPicked = false;
-	
+	private File f;
+	private String filePath = "";
+	DataStore ds = new DataStore();
+	RunAutomationController ra = new RunAutomationController();
 	@FXML
 	private TextField filePathField;
 	
@@ -38,21 +42,31 @@ public class FileSelectionController implements Initializable {
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
+
+	
+	public String getFilePath() {
+		return filePath;
+	}
+
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	
 	@FXML
-	private void chooseFile() {
-		    
-		    File f = fileChooser.showOpenDialog(null);
-	    	
-		    
+	private void chooseFile() throws IOException {
+
+	   
+		    f = fileChooser.showOpenDialog(null);
 
 		    if (f != null) {	    	
-			    if (fv.isExcel(f)) {
-
-
-		        filePathField.setText(f.getAbsolutePath());
-		        System.out.println(f.getAbsolutePath());
-		        alreadyPicked = true;
+			  if (fv.isExcel(f)) {
+				  
+				  
+				  
+			      filePathField.setText(f.getAbsolutePath());
+			      System.out.println(f.getAbsolutePath());
+			      alreadyPicked = true;
 		    } else {
 		        alert = new Alert(Alert.AlertType.ERROR, "Please select a valid excel file.");
 		        alert.setHeaderText("Invalid File!");
@@ -88,10 +102,8 @@ public class FileSelectionController implements Initializable {
 	public void goToSheetSelection(ActionEvent event) throws IOException {
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SheetSelection.fxml"));
 	    root = loader.load(); 
-	     
 	    SheetSelectionController controller = loader.getController(); 
-	    
-
+		    
 	    controller.setFilePath(filePathField.getText());
 	    controller.generateSheets(filePathField.getText());
 	    
@@ -99,8 +111,12 @@ public class FileSelectionController implements Initializable {
 	    scene = new Scene(root);
 	    stage.setScene(scene);
 	    stage.show();
+
 	}
 
+	public void passFilePath() throws IOException {
+	
+	}
 
 	
 	@Override
@@ -110,4 +126,7 @@ public class FileSelectionController implements Initializable {
 		fileChooser.getExtensionFilters().add(excelFilter);
 		fileChooser.getExtensionFilters().add(all);
 	}
+
+
+
 }
