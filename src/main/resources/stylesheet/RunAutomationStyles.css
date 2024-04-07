@@ -31,7 +31,7 @@
 }
 
 .label2 {
-	-fx-font: 14px Verdana;
+	-fx-font: 20px Verdana;
 	-fx-text-fill: #fff;
 	-fx-background-color: rgba(120, 34, 34, 1);
 	-fx-background-radius: 5px;
@@ -61,4 +61,19 @@
 .btn1:hover {
 	-fx-cursor: hand;
 	-fx-background-color: darkblue;
+}
+.names {
+	-fx-text-fill: yellow;
+	-fx-font: 20px Verdana;
+	-fx-font-weight: bold;
+	-fx-background-color: rgba(120, 34, 34, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
+}
+.namesDescription {
+	-fx-font: 18px Verdana;
+	-fx-text-fill: #fff;
+	-fx-background-color: rgba(120, 34, 34, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
 }

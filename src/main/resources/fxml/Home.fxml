@@ -26,9 +26,9 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label styleClass="label1" text="Student Form 2 Completion System">
+                  <Label styleClass="label1" text="School Form 2 Completion System">
                      <VBox.margin>
-                        <Insets right="87.0" />
+                        <Insets right="100.0" />
                      </VBox.margin></Label>
                   <Label styleClass="label2" text="Calculate the overall results o the School Form 2 (SF2) in just a few steps!" />
                </children>
@@ -51,7 +51,11 @@
          <top>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
+<<<<<<< HEAD
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="110.0" layoutY="5.0" onMouseClicked="#config" pickOnBounds="true" preserveRatio="true">
+=======
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="136.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+>>>>>>> f76455fb257ac1d987144bea48b9662c15916269
                      <image>
                         <Image url="@../images/settings_icon.png" />
                      </image>

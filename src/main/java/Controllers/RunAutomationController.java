@@ -1,20 +1,30 @@
 package Controllers;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
+import java.io.InputStream;
+
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 
-public class RunAutomationController {
+public class RunAutomationController implements Initializable {
 	
 	
-	private String coordinates;
 	private String dateCoordinates;
+	private String apCoordinates;
+	private String statisticsCoordinates;
 	
 	private Parent root;
 	private Stage stage;
@@ -22,12 +32,50 @@ public class RunAutomationController {
 	private String filePath;
 	private String sheetName;
 	
+<<<<<<< HEAD
 	public void setDateCoor(String dateCoordinates) {
 		this.setDateCoordinates(dateCoordinates);
 	}
 	
 	public void setCoor(String coordinates) {
 		this.setCoordinates(coordinates);
+=======
+	@FXML
+	private Label filePathText;
+	
+	@FXML
+	private Label sheetNameText;
+
+	@FXML
+	private Label dateCoorText;
+	
+	@FXML
+	private Label apCoorText;
+	
+	@FXML
+	private Label statsCoorText;
+	
+	public void setDateCoordinates(String dateCoordinates) {
+		this.dateCoordinates = dateCoordinates;
+	}
+	
+	public void setAPCoordinates(String apCoordinates) {
+		this.apCoordinates = apCoordinates;
+	}
+	public String getDateCoordinates() {
+		return dateCoordinates;
+	}
+
+	public void setStatisticsCoordinates(String statsCoordinates) {
+		this.statisticsCoordinates = statsCoordinates;
+	}
+	public String getAPCoordinates() {
+		return apCoordinates;
+	}
+
+	public String getStatisticsCoordinates() {
+		return statisticsCoordinates;
+>>>>>>> f76455fb257ac1d987144bea48b9662c15916269
 	}
 	
 	public String getFilePath() {
@@ -35,6 +83,7 @@ public class RunAutomationController {
 	}
 
 	public void setFilePath(String filePath) {
+		filePathText.setText(filePath);
 	    this.filePath = filePath;
 	}
 	public String getSheetName() {
@@ -42,8 +91,11 @@ public class RunAutomationController {
 	}
 
 	public void setSheetName(String sheetName) {
+		sheetNameText.setText(sheetName);
 		this.sheetName = sheetName;
 	}
+	
+	
 	
 	public void goBack(MouseEvent event) throws IOException {
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SheetSelection.fxml"));
@@ -62,9 +114,19 @@ public class RunAutomationController {
 	}
 	
 	public void runAutomation() {
-		System.out.println(getFilePath() + " : " + getSheetName());
+//		System.out.println("File Path: " + getFilePath());
+//		System.out.println("Sheet name: " + getSheetName());
+//		System.out.println("Date Coordinates: " + getDateCoordinates());
+//		System.out.println("Absences and Presences Coordinates: " + getAPCoordinates());
+//		System.out.println("Statistics Coordinates: " + getStatisticsCoordinates());
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		loadProperties();
 	}
 
+<<<<<<< HEAD
 	public String getCoordinates() {
 		return coordinates;
 	}
@@ -85,4 +147,21 @@ public class RunAutomationController {
 
 
 	
+=======
+    private void loadProperties() {
+        Properties prop = new Properties();
+        try (InputStream istream = new FileInputStream("src/main/resources/config.properties")) {
+            prop.load(istream);
+            dateCoordinates = prop.getProperty("dateCoordinates");
+            apCoordinates = prop.getProperty("absencesPresencesCoordinates");
+            statisticsCoordinates = prop.getProperty("statisticsCoordinates");
+            
+            dateCoorText.setText(getDateCoordinates());
+            apCoorText.setText(getAPCoordinates());
+            statsCoorText.setText(getStatisticsCoordinates());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+>>>>>>> f76455fb257ac1d987144bea48b9662c15916269
 }
