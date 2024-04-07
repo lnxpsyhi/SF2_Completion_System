@@ -12,11 +12,24 @@ import javafx.stage.Stage;
 
 public class RunAutomationController {
 	
+	
+	private String coordinates;
+	private String dateCoordinates;
+	
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
 	private String filePath;
 	private String sheetName;
+	
+	public void setDateCoor(String dateCoordinates) {
+		this.dateCoordinates = dateCoordinates;
+	}
+	
+	public void setCoor(String coordinates) {
+		this.coordinates = coordinates;
+	}
+	
 	public String getFilePath() {
 		return filePath;
 	}
