@@ -1,7 +1,5 @@
 package Controllers;
 
-import java.net.URL;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +26,12 @@ public class HomeController {
 	private Parent root;
 	private Alert alert = new Alert(AlertType.WARNING);
 	
+	@FXML
+	private void close() {
+		System.exit(0);
+	}
+	
+	
 	// handle configuration
 	@FXML
 	private void config() {
@@ -41,10 +45,11 @@ public class HomeController {
 				RunAutomationController cont = loader.getController();
 				cont.setCoor(coor);
 				cont.setDateCoor(dateCoor);
+
 			} catch (NullPointerException npe) {
 				alert.setAlertType(AlertType.ERROR);
 				alert.setHeaderText("Not Configured Properly");
-				alert.setContentText("Please make sure that all of the properties has value.");
+				alert.setContentText("Please make sure that all of the properties are configured properly.");
 				alert.showAndWait();
 				configured = false;
 			}

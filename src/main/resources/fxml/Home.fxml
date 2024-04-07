@@ -51,7 +51,7 @@
          <top>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="136.0" layoutY="14.0" onMouseClicked="#config" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="110.0" layoutY="5.0" onMouseClicked="#config" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/settings_icon.png" />
                      </image>
@@ -59,9 +59,17 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="75.0" layoutY="14.0" onMouseClicked="#goToAboutSection" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="60.0" layoutY="5.0" onMouseClicked="#goToAboutSection" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/about_icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="150.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/close.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />

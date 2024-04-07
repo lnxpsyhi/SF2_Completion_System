@@ -23,11 +23,11 @@ public class RunAutomationController {
 	private String sheetName;
 	
 	public void setDateCoor(String dateCoordinates) {
-		this.dateCoordinates = dateCoordinates;
+		this.setDateCoordinates(dateCoordinates);
 	}
 	
 	public void setCoor(String coordinates) {
-		this.coordinates = coordinates;
+		this.setCoordinates(coordinates);
 	}
 	
 	public String getFilePath() {
@@ -63,6 +63,22 @@ public class RunAutomationController {
 	
 	public void runAutomation() {
 		System.out.println(getFilePath() + " : " + getSheetName());
+	}
+
+	public String getCoordinates() {
+		return coordinates;
+	}
+
+	public void setCoordinates(String coordinates) {
+		this.coordinates = coordinates;
+	}
+
+	public String getDateCoordinates() {
+		return dateCoordinates;
+	}
+
+	public void setDateCoordinates(String dateCoordinates) {
+		this.dateCoordinates = dateCoordinates;
 	}
 
 	
