@@ -26,9 +26,9 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label styleClass="label1" text="Student Form 2 Completion System">
+                  <Label styleClass="label1" text="School Form 2 Completion System">
                      <VBox.margin>
-                        <Insets right="87.0" />
+                        <Insets right="100.0" />
                      </VBox.margin></Label>
                   <Label styleClass="label2" text="Calculate the overall results o the School Form 2 (SF2) in just a few steps!" />
                </children>

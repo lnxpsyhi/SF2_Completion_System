@@ -7,11 +7,14 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 import java.io.InputStream;
+
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -28,6 +31,21 @@ public class RunAutomationController implements Initializable {
 	private Scene scene;
 	private String filePath;
 	private String sheetName;
+	
+	@FXML
+	private Label filePathText;
+	
+	@FXML
+	private Label sheetNameText;
+
+	@FXML
+	private Label dateCoorText;
+	
+	@FXML
+	private Label apCoorText;
+	
+	@FXML
+	private Label statsCoorText;
 	
 	public void setDateCoordinates(String dateCoordinates) {
 		this.dateCoordinates = dateCoordinates;
@@ -56,6 +74,7 @@ public class RunAutomationController implements Initializable {
 	}
 
 	public void setFilePath(String filePath) {
+		filePathText.setText(filePath);
 	    this.filePath = filePath;
 	}
 	public String getSheetName() {
@@ -63,8 +82,10 @@ public class RunAutomationController implements Initializable {
 	}
 
 	public void setSheetName(String sheetName) {
+		sheetNameText.setText(sheetName);
 		this.sheetName = sheetName;
 	}
+	
 	
 	
 	public void goBack(MouseEvent event) throws IOException {
@@ -84,11 +105,13 @@ public class RunAutomationController implements Initializable {
 	}
 	
 	public void runAutomation() {
-		System.out.println("Date Coordinates: " + getDateCoordinates());
-		System.out.println("Absences and Presences Coordinates: " + getAPCoordinates());
-		System.out.println("Statistcs Coordinates: " + getStatisticsCoordinates());
+//		System.out.println("File Path: " + getFilePath());
+//		System.out.println("Sheet name: " + getSheetName());
+//		System.out.println("Date Coordinates: " + getDateCoordinates());
+//		System.out.println("Absences and Presences Coordinates: " + getAPCoordinates());
+//		System.out.println("Statistics Coordinates: " + getStatisticsCoordinates());
 	}
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		loadProperties();
@@ -101,12 +124,12 @@ public class RunAutomationController implements Initializable {
             dateCoordinates = prop.getProperty("dateCoordinates");
             apCoordinates = prop.getProperty("absencesPresencesCoordinates");
             statisticsCoordinates = prop.getProperty("statisticsCoordinates");
+            
+            dateCoorText.setText(getDateCoordinates());
+            apCoorText.setText(getAPCoordinates());
+            statsCoorText.setText(getStatisticsCoordinates());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-	
-
-
-	
 }
