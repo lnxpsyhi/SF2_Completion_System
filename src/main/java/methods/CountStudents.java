@@ -30,11 +30,11 @@ public class CountStudents {
 		return girlsNumber;
 	}
 	
-	public void countStudents(String path, String coordinates, int sheetNo) {
+	public void countStudents(String path, String coordinates, String sheetName) {
 		try {
 			inputStream = new FileInputStream(path);
 			workbook = WorkbookFactory.create(inputStream);
-			sheet = workbook.getSheetAt(sheetNo);
+			sheet = workbook.getSheet(sheetName);
 			
 			int colonIndex = coordinates.indexOf(":");
 

@@ -25,10 +25,8 @@ public class CountBoys {
 	private Workbook workbook;
 	private Sheet sheet;
 	
-	
 	CountDates cd = new CountDates();
 	CountStudents cs = new CountStudents();
-
 	
 	private int consecutiveAbsencesBoys = 0;
 	private int consecutiveCount = 0;
@@ -65,14 +63,14 @@ public class CountBoys {
 		return mostAbsencesBoys;
 	}
 	
-	public void countBoys(String path, String coordinates, String dateCoordinates, int sheetNo) {
-		cd.countDates(path, dateCoordinates, sheetNo);
-		cs.countStudents(path, coordinates, sheetNo);
+	public void countBoys(String path, String coordinates, String dateCoordinates, String sheetName) {
+		cd.countDates(path, dateCoordinates, sheetName);
+		cs.countStudents(path, coordinates, sheetName);
 		
 		try {
 			inputStream = new FileInputStream(path);
 			workbook = WorkbookFactory.create(inputStream);
-			sheet = workbook.getSheetAt(sheetNo);
+			sheet = workbook.getSheet(sheetName);
 			
 			int colonIndex = coordinates.indexOf(":");
 

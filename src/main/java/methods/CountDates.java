@@ -2,6 +2,7 @@ package methods;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -16,7 +17,7 @@ public class CountDates {
 	private FileInputStream inputStream;
 	private Workbook workbook;
 	private Sheet sheet;
-	
+	private ArrayList<Integer> dates = new ArrayList<Integer>();
 	
 	private int blanks;
 	
@@ -31,11 +32,11 @@ public class CountDates {
 	} 
 	
 	
-	public void countDates(String path, String coordinates, int sheetNo) {
+	public void countDates(String path, String coordinates, String sheetName) {
 		try {
 			inputStream = new FileInputStream(path);
 			workbook = WorkbookFactory.create(inputStream);
-			sheet = workbook.getSheetAt(sheetNo);
+			sheet = workbook.getSheet(sheetName);
 			
 			
 			
@@ -79,7 +80,7 @@ public class CountDates {
                        } else if (currentCell.getCellType() == CellType.NUMERIC) {
                            countingBlanks = false;                  
                            numberOfDates++;
-                          
+                           dates.add(currentCell.getNumericCellValue());
                        }
                     
                	   }
