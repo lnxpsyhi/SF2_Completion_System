@@ -1,4 +1,4 @@
-module sf2_completion_system {
+module SF2_Completion_System {
 	
 	opens Controllers to javafx.fxml;
 	
@@ -6,6 +6,7 @@ module sf2_completion_system {
 	exports methods;
 	
 	requires java.desktop;
+	requires java.base;
 	requires transitive javafx.controls;
 	requires javafx.fxml;
 	requires org.apache.poi.poi;

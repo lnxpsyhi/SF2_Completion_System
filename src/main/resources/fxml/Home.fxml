@@ -51,22 +51,26 @@
          <top>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="136.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/settings_icon.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="75.0" layoutY="14.0" onMouseClicked="#goToAboutSection" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/about_icon.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
+                  <HBox alignment="TOP_CENTER" layoutX="116.0" layoutY="14.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#goToAboutSection" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/about_icon.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#configBtnOnClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/settings_icon.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children></AnchorPane>
          </top>
          <bottom>

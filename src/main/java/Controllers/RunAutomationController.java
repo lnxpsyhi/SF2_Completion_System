@@ -18,42 +18,49 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-
 public class RunAutomationController implements Initializable {
-	
-	
+
 	private String dateCoordinates;
 	private String apCoordinates;
 	private String statisticsCoordinates;
-	
+
 	private Parent root;
 	private Stage stage;
 	private Scene scene;
 	private String filePath;
 	private String sheetName;
-	
+
+	public void setDateCoor(String dateCoordinates) {
+		this.setDateCoordinates(dateCoordinates);
+	}
+
+	public void setCoor(String coordinates) {
+		this.setCoor(coordinates);
+	}
+
 	@FXML
 	private Label filePathText;
-	
+
 	@FXML
 	private Label sheetNameText;
 
 	@FXML
 	private Label dateCoorText;
-	
+
 	@FXML
 	private Label apCoorText;
-	
+
 	@FXML
 	private Label statsCoorText;
-	
+
 	public void setDateCoordinates(String dateCoordinates) {
 		this.dateCoordinates = dateCoordinates;
 	}
-	
+
 	public void setAPCoordinates(String apCoordinates) {
 		this.apCoordinates = apCoordinates;
 	}
+
 	public String getDateCoordinates() {
 		return dateCoordinates;
 	}
@@ -61,6 +68,7 @@ public class RunAutomationController implements Initializable {
 	public void setStatisticsCoordinates(String statsCoordinates) {
 		this.statisticsCoordinates = statsCoordinates;
 	}
+
 	public String getAPCoordinates() {
 		return apCoordinates;
 	}
@@ -68,15 +76,16 @@ public class RunAutomationController implements Initializable {
 	public String getStatisticsCoordinates() {
 		return statisticsCoordinates;
 	}
-	
+
 	public String getFilePath() {
 		return filePath;
 	}
 
 	public void setFilePath(String filePath) {
 		filePathText.setText(filePath);
-	    this.filePath = filePath;
+		this.filePath = filePath;
 	}
+
 	public String getSheetName() {
 		return sheetName;
 	}
@@ -85,25 +94,22 @@ public class RunAutomationController implements Initializable {
 		sheetNameText.setText(sheetName);
 		this.sheetName = sheetName;
 	}
-	
-	
-	
+
 	public void goBack(MouseEvent event) throws IOException {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SheetSelection.fxml"));
-	    root = loader.load(); 
-	     
-	    SheetSelectionController controller = loader.getController(); 
-	    
-	    
-	    controller.setFilePath(getFilePath());
-	    controller.generateSheets(getFilePath());
-	    
-	    stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-	    scene = new Scene(root);
-	    stage.setScene(scene);
-	    stage.show();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SheetSelection.fxml"));
+		root = loader.load();
+
+		SheetSelectionController controller = loader.getController();
+
+		controller.setFilePath(getFilePath());
+		controller.generateSheets(getFilePath());
+
+		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
 	}
-	
+
 	public void runAutomation() {
 //		System.out.println("File Path: " + getFilePath());
 //		System.out.println("Sheet name: " + getSheetName());
@@ -111,25 +117,25 @@ public class RunAutomationController implements Initializable {
 //		System.out.println("Absences and Presences Coordinates: " + getAPCoordinates());
 //		System.out.println("Statistics Coordinates: " + getStatisticsCoordinates());
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		loadProperties();
 	}
 
-    private void loadProperties() {
-        Properties prop = new Properties();
-        try (InputStream istream = new FileInputStream("src/main/resources/config.properties")) {
-            prop.load(istream);
-            dateCoordinates = prop.getProperty("dateCoordinates");
-            apCoordinates = prop.getProperty("absencesPresencesCoordinates");
-            statisticsCoordinates = prop.getProperty("statisticsCoordinates");
-            
-            dateCoorText.setText(getDateCoordinates());
-            apCoorText.setText(getAPCoordinates());
-            statsCoorText.setText(getStatisticsCoordinates());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	private void loadProperties() {
+		Properties prop = new Properties();
+		try (InputStream istream = new FileInputStream("src/main/resources/config.properties")) {
+			prop.load(istream);
+			dateCoordinates = prop.getProperty("dateCoordinates");
+			apCoordinates = prop.getProperty("absencesPresencesCoordinates");
+			statisticsCoordinates = prop.getProperty("statisticsCoordinates");
+
+			dateCoorText.setText(getDateCoordinates());
+			apCoorText.setText(getAPCoordinates());
+			statsCoorText.setText(getStatisticsCoordinates());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
