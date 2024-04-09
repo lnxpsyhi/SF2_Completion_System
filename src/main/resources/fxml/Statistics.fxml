@@ -31,12 +31,12 @@
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Enrolment as of 1st FRI of the S.Y.">
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" styleClass="names" text="Enrolment as of 1st FRI of the S.Y.">
                                        <HBox.margin>
                                           <Insets left="25.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="enrolment" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="75.0" styleClass="namesDescription" text="&lt;value&gt;" />
+                                    <Label fx:id="enrolment" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="75.0" styleClass="namesDescription" text="&lt;value&gt;" textAlignment="CENTER" />
                                  </children>
                                  <VBox.margin>
                                     <Insets top="5.0" />
@@ -45,7 +45,7 @@
                               <HBox prefHeight="100.0" prefWidth="200.0" />
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Late enrolment (beyond cut-off)">
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" styleClass="names" text="Late enrolment (beyond cut-off)">
                                        <HBox.margin>
                                           <Insets left="25.0" />
                                        </HBox.margin>
@@ -58,7 +58,7 @@
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Registered Learners">
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" styleClass="names" text="Registered Learners">
                                        <HBox.margin>
                                           <Insets left="25.0" />
                                        </HBox.margin>
@@ -71,7 +71,7 @@
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Percentage of Enrolment">
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" styleClass="names" text="Percentage of Enrolment">
                                        <HBox.margin>
                                           <Insets left="25.0" />
                                        </HBox.margin>
@@ -84,7 +84,7 @@
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Average Daily Attendance">
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" styleClass="names" text="Average Daily Attendance">
                                        <HBox.margin>
                                           <Insets left="25.0" />
                                        </HBox.margin>
@@ -97,7 +97,7 @@
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Percentage of Attendance">
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" styleClass="names" text="Percentage of Attendance">
                                        <HBox.margin>
                                           <Insets left="25.0" />
                                        </HBox.margin>
@@ -110,7 +110,7 @@
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Absent for 5 consecutive days">
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" styleClass="names" text="Absent for 5 consecutive days">
                                        <HBox.margin>
                                           <Insets left="25.0" />
                                        </HBox.margin>
@@ -130,7 +130,7 @@
                         </VBox>
                         <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="399.0">
                            <children>
-                              <LineChart>
+                              <LineChart fx:id="chart">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" />
                                 </xAxis>
@@ -144,7 +144,7 @@
                   </HBox>
                </children>
                <BorderPane.margin>
-                  <Insets />
+                  <Insets bottom="50.0" />
                </BorderPane.margin>
                <padding>
                   <Insets bottom="300.0" />

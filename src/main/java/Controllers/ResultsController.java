@@ -30,8 +30,70 @@ public class ResultsController implements Initializable {
 	@FXML
 	ScrollPane scrollPane2 = new ScrollPane();
 	
+	private int enrolment = 0;
+	private int lateEnrolment = 0;
+	private int registeredLearners = 0;
+	private int percentageEnrolment = 0;
+	private int averageDaily = 0;
+	private int percentageAttendance = 0;
+	private int fiveConsecutiveDays = 0;
+	
+	 public void setEnrolment(int enrolment) {
+	        this.enrolment = enrolment;
+	    }
 
+	    public void setLateEnrolment(int lateEnrolment) {
+	        this.lateEnrolment = lateEnrolment;
+	    }
 
+	    public void setRegisteredLearners(int registeredLearners) {
+	        this.registeredLearners = registeredLearners;
+	    }
+
+	    public void setPercentageEnrolment(int percentageEnrolment) {
+	        this.percentageEnrolment = percentageEnrolment;
+	    }
+
+	    public void setAverageDaily(int averageDaily) {
+	        this.averageDaily = averageDaily;
+	    }
+
+	    public void setPercentageAttendance(int percentageAttendance) {
+	        this.percentageAttendance = percentageAttendance;
+	    }
+
+	    public void setFiveConsecutiveDays(int fiveConsecutiveDays) {
+	        this.fiveConsecutiveDays = fiveConsecutiveDays;
+	    }
+
+	    // Getters
+	    public int getEnrolment() {
+	        return enrolment;
+	    }
+
+	    public int getLateEnrolment() {
+	        return lateEnrolment;
+	    }
+
+	    public int getRegisteredLearners() {
+	        return registeredLearners;
+	    }
+
+	    public int getPercentageEnrolment() {
+	        return percentageEnrolment;
+	    }
+
+	    public int getAverageDaily() {
+	        return averageDaily;
+	    }
+
+	    public int getPercentageAttendance() {
+	        return percentageAttendance;
+	    }
+
+	    public int getFiveConsecutiveDays() {
+	        return fiveConsecutiveDays;
+	    }
 	
     @FXML
     private Label numberOfClasses;
@@ -112,10 +174,17 @@ public class ResultsController implements Initializable {
     }
 
     public void goToStatistics(ActionEvent event) throws IOException {
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/Statistics.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Statistics.fxml"));
     	root = loader.load();
     	StatisticsController controller = loader.getController();
     	
+    	controller.setEnrolment(Integer.toString(getEnrolment()));
+    	controller.setLateEnrolment(Integer.toString(getLateEnrolment()));
+    	controller.setRegisteredLearners(Integer.toString(getRegisteredLearners()));
+    	controller.setPercentageEnrolment(getPercentageEnrolment() + "%");
+    	controller.setAverageDaily(getAverageDaily() + "%");
+    	controller.setPercentageAttendance(getPercentageAttendance() + "%");
+    	controller.setFiveConsecutiveDays(Integer.toString(getFiveConsecutiveDays()));
     	
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);

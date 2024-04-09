@@ -187,7 +187,7 @@
                   </HBox>
                </children>
                <BorderPane.margin>
-                  <Insets />
+                  <Insets bottom="50.0" />
                </BorderPane.margin>
                <padding>
                   <Insets bottom="300.0" />

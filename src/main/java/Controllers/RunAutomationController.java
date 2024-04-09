@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -58,7 +59,12 @@ public class RunAutomationController implements Initializable {
 	public void setCoor(String coordinates) {
 		this.setCoor(coordinates);
 	}
+	@FXML
+	private TextField lateEnrollmentBoys;
 
+	@FXML
+	private TextField lateEnrollmentGirls;
+	
 	@FXML
 	private Label filePathText;
 
@@ -132,9 +138,7 @@ public class RunAutomationController implements Initializable {
 	}
 
 	public void runAutomation(ActionEvent event) throws IOException {
-
 		runAllMethods(getFilePath(), getSheetName(), getDateCoordinates(), getAPCoordinates(), getStatisticsCoordinates(), event);	
-
 	}
 
 	
@@ -165,7 +169,16 @@ public class RunAutomationController implements Initializable {
 		root = loader.load();
 		
 		ResultsController controller = loader.getController();
-
+		
+		if (lateEnrollmentBoys.getText().isEmpty()) {
+			cstats.setLateEnrolmentBoys(0);
+		} else if (lateEnrollmentGirls.getText().isBlank()) {
+			cstats.setLateEnrolmentGirls(0);
+		} else {
+			cstats.setLateEnrolmentBoys(Integer.parseInt(lateEnrollmentBoys.getText()));
+			cstats.setLateEnrolmentGirls(Integer.parseInt(lateEnrollmentGirls.getText()));
+			cstats.setLateEnrolmentTotal(Integer.parseInt(lateEnrollmentBoys.getText()) + Integer.parseInt(lateEnrollmentGirls.getText()));
+		}
 		
 		cd.countDates(PATH, dateCoordinates, sheetName);
 		cs.countStudents(PATH, apCoordinates, sheetName);
@@ -186,8 +199,11 @@ public class RunAutomationController implements Initializable {
 		controller.setTotalPresencesGirls(cg.getGirlsTotalPresences());
 		controller.setOverallAbsences(co.getOverallAbsences());
 		controller.setOverallPresences(co.getOverallPresences());
+		
+		
 		StringBuilder mostAbsencesBuilder = new StringBuilder();
 		StringBuilder perfectAttendanceBuilder = new StringBuilder();
+		
 		for (Map.Entry<String, Integer> entry : co.getMostAbsencesOverall().entrySet()) {
 		    String name = entry.getKey();
 		    int absences = entry.getValue();
@@ -198,8 +214,20 @@ public class RunAutomationController implements Initializable {
 		    perfectAttendanceBuilder.append(name).append("\n");
 		    System.out.println(perfectAttendanceBuilder.toString());
 		}
+		
 		controller.setMostAbsences(mostAbsencesBuilder.toString());
 		controller.setPerfectAttendance(perfectAttendanceBuilder.toString());
+		
+		controller.setEnrolment(cstats.getEnrolmentTotal());
+		controller.setLateEnrolment(cstats.getLateEnrolmentTotal());
+		controller.setRegisteredLearners(cs.getBoysNumber() + cs.getGirlsNumber());
+		controller.setPercentageEnrolment(cstats.getPercentageTotal());
+		controller.setAverageDaily((int) cstats.getAverageTotal());
+		controller.setPercentageAttendance((int) cstats.getPercentageMonthTotal());
+		controller.setFiveConsecutiveDays(cb.getConsecutiveAbsencesBoys() + cg.getConsecutiveAbsencesGirls());
+		
+		
+		
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);

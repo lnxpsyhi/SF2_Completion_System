@@ -64,7 +64,7 @@
 }
 
 .names {
-	-fx-font: 12.5px Verdana;
+	-fx-font: 15px Verdana;
 	-fx-font-weight: bold;
 	-fx-text-fill: yellow;
 	-fx-background-color: rgba(120, 34, 34, 1);
@@ -79,7 +79,8 @@
 	-fx-padding: 0.2em;
 }
 .namesDescription {
-	-fx-font: 10px Verdana;
+	-fx-font-weight: bold;
+	-fx-font: 15px Verdana;
 	-fx-text-fill: #fff;
 	-fx-background-color: rgba(120, 34, 34, 1);
 	-fx-background-radius: 5px;
