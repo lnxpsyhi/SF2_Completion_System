@@ -51,15 +51,15 @@ public class CountOverall {
 	public ArrayList<String> getPerfectAttendanceOverall() {
 		return perfectAttendanceOverall;
 	}
-	public void countOverallTotalAbsences(String path, String coordinates, String dateCoordinates, int sheetNo) {
-		cs.countStudents(path, coordinates, sheetNo);
-		cb.countBoys(path, coordinates, dateCoordinates, sheetNo);
-		cg.countGirls(path, coordinates, dateCoordinates, sheetNo);
-		cd.countDates(path, dateCoordinates, sheetNo);
+	public void countOverallTotalAbsences(String path, String coordinates, String dateCoordinates, String sheetName) {
+		cs.countStudents(path, coordinates, sheetName);
+		cb.countBoys(path, coordinates, dateCoordinates, sheetName);
+		cg.countGirls(path, coordinates, dateCoordinates, sheetName);
+		cd.countDates(path, dateCoordinates, sheetName);
 		try {
 			inputStream = new FileInputStream(path);
 			workbook = WorkbookFactory.create(inputStream);
-			sheet = workbook.getSheetAt(sheetNo);
+			sheet = workbook.getSheet(sheetName);
 			
 			 for (int i = 0; i < cd.getNumberOfDates(); i++) {
 	            	combinedTotalPerDay.add(cb.getBoysTotalPerDay(i) + cg.getGirlsTotalPerDay(i));

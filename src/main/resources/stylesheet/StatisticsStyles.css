@@ -1,0 +1,88 @@
+.borderpane {
+	-fx-background-image: url(../images/cshs.jpg);
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: 100%;
+}
+
+.schoolname {
+	-fx-font: 24px Verdana;
+	-fx-text-fill: #fff;
+}
+
+.schoollogo {
+	-fx-image: url(../images/cshs_logo.png);
+}
+
+.proceedbtn {
+	-fx-background-color: #fff;
+}
+
+.proceedbtn:hover {
+	-fx-background-color: yellow;
+	-fx-cursor: hand;
+}
+
+.label1 {
+	-fx-font: 24px Verdana;
+	-fx-text-fill: #fff;
+	-fx-background-color: rgba(108, 70, 70, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
+}
+
+.label2 {
+	-fx-font: 14px Verdana;
+	-fx-text-fill: #fff;
+	-fx-background-color: rgba(120, 34, 34, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
+}
+
+.rightpane {
+	-fx-background-color: rgba(15, 7, 88, 1); 
+}
+
+.btncontainer1 {
+	-fx-background-color: rgba(27, 17, 84, 1); 
+}
+
+.btn1 {
+	-fx-background-color: rgba(23, 0, 226, 1);
+	-fx-background-radius: 8px; 
+	-fx-text-fill: #fff;
+	-fx-border-color: #fff;
+	-fx-border-radius: 8px;
+	-fx-border-style: solid;
+	-fx-padding: 10px;
+	-fx-pref-width: 150px;
+	-fx-font-family: Verdana;
+}
+
+.btn1:hover {
+	-fx-cursor: hand;
+	-fx-background-color: darkblue;
+}
+
+.names {
+	-fx-font: 12.5px Verdana;
+	-fx-font-weight: bold;
+	-fx-text-fill: yellow;
+	-fx-background-color: rgba(120, 34, 34, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
+	}
+.description {
+	-fx-font: 16px Verdana;
+	-fx-text-fill: #fff;
+	-fx-background-color: rgba(120, 34, 34, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
+}
+.namesDescription {
+	-fx-font: 10px Verdana;
+	-fx-text-fill: #fff;
+	-fx-background-color: rgba(120, 34, 34, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
+}
+	

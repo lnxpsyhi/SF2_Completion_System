@@ -66,14 +66,14 @@ public class CountGirls {
 		return mostAbsencesGirls;
 	}
 		
-	public void countGirls(String path, String coordinates, String dateCoordinates, int sheetNo) {
-		cd.countDates(path, dateCoordinates, sheetNo);
-		cs.countStudents(path, coordinates, sheetNo);
+	public void countGirls(String path, String coordinates, String dateCoordinates, String sheetName) {
+		cd.countDates(path, dateCoordinates, sheetName);
+		cs.countStudents(path, coordinates, sheetName);
 		
 		try {
 			inputStream = new FileInputStream(path);
 			workbook = WorkbookFactory.create(inputStream);
-			sheet = workbook.getSheetAt(sheetNo);
+			sheet = workbook.getSheet(sheetName);
 			
 			int colonIndex = coordinates.indexOf(":");
 

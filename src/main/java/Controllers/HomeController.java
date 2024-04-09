@@ -106,7 +106,7 @@ public class HomeController implements Initializable {
 	}
 	
 	// check if the properties are configured properly
-	private boolean isConfigured(Properties props) throws ConfigurationException, IOException{
+	private boolean isConfigured(Properties props) throws ConfigurationException, IOException {
 			String dateCoor = props.getProperty("dateCoordinates");
 			String absencesPresencesCoor = props.getProperty("absencesPresencesCoordinates");
 			String statisticsCoor = props.getProperty("statisticsCoordinates");

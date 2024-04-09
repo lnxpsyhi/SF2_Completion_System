@@ -4,8 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import javax.swing.JOptionPane;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -114,16 +112,16 @@ public class CountStatistics {
 	}
 	
 
-	public void countStatistics(String path, String coordinates, String dateCoordinates, int sheetNo, String statsCoordinates) {
-		cs.countStudents(path, coordinates, sheetNo);
-		cb.countBoys(path, coordinates, dateCoordinates, sheetNo);
-		cg.countGirls(path, coordinates, dateCoordinates, sheetNo);
-		cd.countDates(path, dateCoordinates, sheetNo);
-		co.countOverallTotalAbsences(path, coordinates, dateCoordinates, sheetNo);
+	public void countStatistics(String path, String coordinates, String dateCoordinates, String sheetName, String statsCoordinates) {
+		cs.countStudents(path, coordinates, sheetName);
+		cb.countBoys(path, coordinates, dateCoordinates, sheetName);
+		cg.countGirls(path, coordinates, dateCoordinates, sheetName);
+		cd.countDates(path, dateCoordinates, sheetName);
+		co.countOverallTotalAbsences(path, coordinates, dateCoordinates, sheetName);
 		try {
 			inputStream = new FileInputStream(path);
 			workbook = WorkbookFactory.create(inputStream);
-			sheet = workbook.getSheetAt(sheetNo);
+			sheet = workbook.getSheet(sheetName);
 			
 			enrolmentBoys = cs.getBoysNumber() - getLateEnrolmentBoys();
 			enrolmentGirls = cs.getGirlsNumber() - getLateEnrolmentGirls();
@@ -266,7 +264,6 @@ public class CountStatistics {
             }
 			try (FileOutputStream fileout = new FileOutputStream(path)) {
                 workbook.write(fileout);
-                JOptionPane.showMessageDialog(null, "Done calculating!");
             }
 		} catch (IOException e) {
 			System.out.println(e);
