@@ -80,7 +80,7 @@ public class CountDates {
                        } else if (currentCell.getCellType() == CellType.NUMERIC) {
                            countingBlanks = false;                  
                            numberOfDates++;
-                           dates.add(currentCell.getNumericCellValue());
+                           dates.add((int)currentCell.getNumericCellValue());
                        }
                     
                	   }

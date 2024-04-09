@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../stylesheet/ResultsStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ResultsController">
+   <center>
+      <BorderPane styleClass="borderpane" BorderPane.alignment="CENTER">
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="label1" text="Results">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#goToStatistics" styleClass="btn1" text="Proceed">
+                           <HBox.margin>
+                              <Insets left="500.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="200.0" />
+                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Number of Classes">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="numberOfClasses" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="29.0" prefWidth="75.0" styleClass="namesDescription" text="&lt;value&gt;" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" />
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Total (Boys)">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="totalBoys" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="75.0" styleClass="namesDescription" text="&lt;value&gt;" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Total Absences (Boys)">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="totalAbsencesBoys" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="75.0" styleClass="namesDescription" text="&lt;value&gt;" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Total Presences (Boys)">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="totalPresencesBoys" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="75.0" styleClass="namesDescription" text="&lt;value&gt;" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Total (Girls)">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="totalGirls" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="75.0" styleClass="namesDescription" text="&lt;value&gt;" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Total Absences (Girls)">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="totalAbsencesGirls" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="75.0" styleClass="namesDescription" text="&lt;value&gt;" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Total Presences (Girls)">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="totalPresencesGirls" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="75.0" styleClass="namesDescription" text="&lt;value&gt;" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Overall Absences">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="overallAbsences" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="75.0" styleClass="namesDescription" text="&lt;value&gt;" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0" styleClass="names" text="Overall Presences">
+                                       <HBox.margin>
+                                          <Insets left="25.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label fx:id="overallPresences" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="75.0" styleClass="namesDescription" text="&lt;value&gt;" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="399.0">
+                           <children>
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefWidth="400.0" styleClass="names" text="Students with most absences">
+                                 <VBox.margin>
+                                    <Insets right="25.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ScrollPane fx:id="scrollPane1" minHeight="-Infinity" prefHeight="200.0" prefWidth="200.0" styleClass="scrollPane">
+                                 <VBox.margin>
+                                    <Insets right="25.0" />
+                                 </VBox.margin>
+                                 <content>
+                                    <Label fx:id="mostAbsences" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefWidth="400.0" styleClass="namesDescription" />
+                                 </content>
+                              </ScrollPane>
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefWidth="400.0" styleClass="names" text="Students with perfect attendance">
+                                 <VBox.margin>
+                                    <Insets right="25.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ScrollPane fx:id="scrollPane2" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" styleClass="scrollPane">
+                                 <content>
+                                    <Label fx:id="perfectAttendance" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="400.0" styleClass="namesDescription" />
+                                 </content>
+                                 <VBox.margin>
+                                    <Insets right="25.0" />
+                                 </VBox.margin>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="50.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="300.0" />
+               </padding>
+            </VBox>
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>

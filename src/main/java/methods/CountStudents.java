@@ -64,14 +64,11 @@ public class CountStudents {
                                 mergedRegion = region;
                                 break;
                             }
-                        }
-                        
+                        }          
                         if (mergedRegion != null) {
                             cell = mergedRegion.getLastColumn();
                         }
-                        
-                		
-                		
+
                 		if (cellIteration == 1) {
                         	if (!changed) {
                         		if (currentCell.getCellType().equals(CellType.NUMERIC)) {

@@ -4,8 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import javax.swing.JOptionPane;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -31,7 +29,7 @@ public class CountStatistics {
 	
 	private int lateEnrolmentBoys = 0;
 	private int lateEnrolmentGirls = 0;
-	private int lateEnrolmentTotal = getLateEnrolmentBoys() + getLateEnrolmentGirls();
+	private int lateEnrolmentTotal = 0;
 	
 	private int percentageBoys = 0;
 	private int percentageGirls = 0;
@@ -109,10 +107,12 @@ public class CountStatistics {
 		this.lateEnrolmentBoys = lateEnrolmentBoys;
 	}
 	
-	public void setLateEnrolmentGirs(int lateEnrolmentGirls) {
+	public void setLateEnrolmentGirls(int lateEnrolmentGirls) {
 		this.lateEnrolmentGirls = lateEnrolmentGirls;
 	}
-	
+	public void setLateEnrolmentTotal(int lateEnrolmentTotal) {
+		this.lateEnrolmentTotal = lateEnrolmentTotal;
+	}
 
 	public void countStatistics(String path, String coordinates, String dateCoordinates, String sheetName, String statsCoordinates) {
 		cs.countStudents(path, coordinates, sheetName);
@@ -266,7 +266,6 @@ public class CountStatistics {
             }
 			try (FileOutputStream fileout = new FileOutputStream(path)) {
                 workbook.write(fileout);
-                JOptionPane.showMessageDialog(null, "Done calculating!");
             }
 		} catch (IOException e) {
 			System.out.println(e);
