@@ -226,7 +226,21 @@ public class RunAutomationController implements Initializable {
 		controller.setPercentageAttendance((int) cstats.getPercentageMonthTotal());
 		controller.setFiveConsecutiveDays(cb.getConsecutiveAbsencesBoys() + cg.getConsecutiveAbsencesGirls());
 		
+		for (int date : cd.getDates()) {
+			controller.setDates(date);
+		}
 		
+		for (int value : co.getCombinedTotalPerDay()) {
+			controller.setCombinedTotalPerDay(value);
+		}
+		
+		for (int boys : cb.getBoysTotalPerDay()) {
+			controller.setBoysTotalPerDay(boys);
+		}
+		
+		for (int girls : cg.getGirlsTotalPerDay()) {
+			controller.setGirlsTotalPerDay(girls);
+		}
 		
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);

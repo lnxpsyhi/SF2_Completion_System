@@ -18,7 +18,9 @@ public class CountDates {
 	private Workbook workbook;
 	private Sheet sheet;
 	private ArrayList<Integer> dates = new ArrayList<Integer>();
-	
+	public ArrayList<Integer> getDates() {
+        return dates;
+     }
 	private int blanks;
 	
 	private int numberOfDates;

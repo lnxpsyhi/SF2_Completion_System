@@ -36,7 +36,6 @@ public class HomeController implements Initializable {
 	public void goToDateConfiguration(MouseEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DateConfiguration.fxml"));
 		root = loader.load();
-		DateConfigurationController controller = loader.getController();
 		
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -92,7 +91,7 @@ public class HomeController implements Initializable {
 		// TODO Auto-generated method stub
 		
 		// load configuration properties on start
-		try (InputStream istream = new FileInputStream("src/main/resources/config.properties")) {
+		try (InputStream istream = new FileInputStream(CONFIG_PATH)) {
 			props.load(istream);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

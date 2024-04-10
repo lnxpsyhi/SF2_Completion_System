@@ -66,7 +66,6 @@ private Alert alert = new Alert(AlertType.WARNING);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StatisticsConfiguration.fxml"));
             root = loader.load();
             
-    		StatisticsConfigurationController controller = loader.getController();
             
     		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     		scene = new Scene(root);

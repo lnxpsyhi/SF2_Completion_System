@@ -1,9 +1,8 @@
 package Controllers;
 
-
-
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -38,7 +37,36 @@ public class ResultsController implements Initializable {
 	private int percentageAttendance = 0;
 	private int fiveConsecutiveDays = 0;
 	
-	 public void setEnrolment(int enrolment) {
+	private ArrayList<Integer> girlsTotalPerDay = new ArrayList<Integer>();
+	public ArrayList<Integer> getGirlsTotalPerDay() {
+		return girlsTotalPerDay;
+	}
+	public void setGirlsTotalPerDay(int girls) {
+		girlsTotalPerDay.add(girls);
+	}
+	private ArrayList<Integer> boysTotalPerDay = new ArrayList<Integer>();
+	public ArrayList<Integer> getBoysTotalPerDay() {
+		return boysTotalPerDay;
+	}
+	public void setBoysTotalPerDay(int boys) {
+		boysTotalPerDay.add(boys);
+	}
+	private ArrayList<Integer> combinedTotalPerDay = new ArrayList<Integer>(); 
+	public ArrayList<Integer> getCombinedTotalPerDay() {
+		return combinedTotalPerDay;
+	}
+	public void setCombinedTotalPerDay(int value) {
+			combinedTotalPerDay.add(value);
+	}
+	private ArrayList<Integer> dates = new ArrayList<Integer>();
+	
+	 	public ArrayList<Integer> getDates() {
+		 	return dates;
+	 	 }
+	 	public void setDates(int date) {
+		 	dates.add(date);
+	     }
+	 	public void setEnrolment(int enrolment) {
 	        this.enrolment = enrolment;
 	    }
 
@@ -94,7 +122,8 @@ public class ResultsController implements Initializable {
 	    public int getFiveConsecutiveDays() {
 	        return fiveConsecutiveDays;
 	    }
-	
+
+	    
     @FXML
     private Label numberOfClasses;
 
@@ -181,10 +210,17 @@ public class ResultsController implements Initializable {
     	controller.setEnrolment(Integer.toString(getEnrolment()));
     	controller.setLateEnrolment(Integer.toString(getLateEnrolment()));
     	controller.setRegisteredLearners(Integer.toString(getRegisteredLearners()));
-    	controller.setPercentageEnrolment(getPercentageEnrolment() + "%");
-    	controller.setAverageDaily(getAverageDaily() + "%");
-    	controller.setPercentageAttendance(getPercentageAttendance() + "%");
+    	controller.setPercentageEnrolment(Integer.toString(getPercentageEnrolment()) + "%");
+    	controller.setAverageDaily(Integer.toString(getAverageDaily()) + "%");
+    	controller.setPercentageAttendance(Integer.toString(getPercentageAttendance()) + "%");
     	controller.setFiveConsecutiveDays(Integer.toString(getFiveConsecutiveDays()));
+
+    
+    	controller.setChart(getDates(), getCombinedTotalPerDay(), getBoysTotalPerDay(), getGirlsTotalPerDay());
+    	    
+    
+
+    	   
     	
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -199,5 +235,9 @@ public class ResultsController implements Initializable {
 		scrollPane1.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		scrollPane2.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		scrollPane2.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);;
+
 	}
+
+
+
 }
