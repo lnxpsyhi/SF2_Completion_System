@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../stylesheet/DateConfigurationStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DateConfigurationController">
+   <center>
+      <BorderPane styleClass="borderpane" BorderPane.alignment="CENTER">
+          <top>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="800.0" spacing="2.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label prefHeight="33.0" styleClass="label1" text="Date Configuration">
+                     <VBox.margin>
+                        <Insets right="551.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="750.0" styleClass="description" text="Step 1: Get the coordinates of the first and last cell in the &quot;Date Cells&quot; &#10;section, as shown below, regardless of whether it is blank, and use them&#10;in the input box below. Separate with a colon, e.g., K16:BE16." />
+               </children>
+            </VBox>
+         </top>
+         <center>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="300.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Configuration/DateCoordinate1.jpeg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="300.0" fitWidth="407.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Configuration/DateCoordinate2.jpeg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </center>
+         <bottom>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="dateCoordinateField" prefHeight="34.0" prefWidth="225.0" promptText="e.g., K16:BE16">
+                     <HBox.margin>
+                        <Insets left="400.0" top="30.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" onAction="#goToAPConfiguration" styleClass="btn1" text="Proceed">
+                     <HBox.margin>
+                        <Insets left="10.0" top="29.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </center>
+</BorderPane>

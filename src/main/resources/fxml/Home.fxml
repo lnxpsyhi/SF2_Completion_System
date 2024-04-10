@@ -61,7 +61,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#configBtnOnClick" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#goToDateConfiguration" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/settings_icon.png" />
                            </image>

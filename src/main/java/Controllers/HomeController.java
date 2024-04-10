@@ -44,8 +44,11 @@ public class HomeController implements Initializable {
 
 	// modify configuration properties
 	
+	/*
+	
 	@FXML
 	private void configBtnOnClick() {
+		
 		
 		
 		// dateCoordinates=K16:BH16
@@ -70,7 +73,7 @@ public class HomeController implements Initializable {
 		
 		TextField statCoorTf = new TextField();
 		statCoorTf.setPromptText("statistics Coordinates");
-		
+  		
 		gridp.add(dateCoorTf, 0, 0);
 		gridp.add(apCoorTf, 0, 1);
 		gridp.add(statCoorTf, 0, 2);
@@ -105,25 +108,41 @@ public class HomeController implements Initializable {
 		});
 	}
 	
+	*/
+	
+	public void goToDateConfiguration(MouseEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DateConfiguration.fxml"));
+		root = loader.load();
+		DateConfigurationController controller = loader.getController();
+		
+		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	
+	
 	// check if the properties are configured properly
-	private boolean isConfigured(Properties props) throws ConfigurationException, IOException {
+	private boolean isConfigured(Properties props) throws IOException {
+		
 			String dateCoor = props.getProperty("dateCoordinates");
 			String absencesPresencesCoor = props.getProperty("absencesPresencesCoordinates");
 			String statisticsCoor = props.getProperty("statisticsCoordinates");
 			
 			boolean hasNull = dateCoor == null || absencesPresencesCoor == null || statisticsCoor == null;
 			
-			// handle possible scenarios
+	
 			if (hasNull) {
 				alert.setHeaderText("Missing Properties!");
 				alert.setContentText("Has missing properties.");
 				alert.showAndWait();
-				throw new ConfigurationException("Error! Has missing properties.");
+				return false;
 			} else if (dateCoor.isBlank() | absencesPresencesCoor.isBlank() | statisticsCoor.isBlank()) {
 				alert.setHeaderText("Missing Value!");
 				alert.setContentText("Has missing properties value.");
 				alert.showAndWait();
-				throw new ConfigurationException("Error! Has missing properties value.");
+				return false;
 			} else {
 				return true;
 			}
@@ -136,10 +155,6 @@ public class HomeController implements Initializable {
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-		} else {
-			alert.setHeaderText("Configuration Alert");
-			alert.setContentText("Please configure your settings before proceeding.");
-			alert.showAndWait();
 		}
 	}
 

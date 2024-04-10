@@ -1,0 +1,63 @@
+.borderpane  {
+	-fx-background-color: rgba(27, 17, 84, 1)
+}
+.label1 {
+	-fx-font: 20px Verdana;
+	-fx-text-fill: #fff;
+	-fx-background-color: rgba(108, 70, 70, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
+}
+
+.description {
+	-fx-font: 20px Verdana;
+	-fx-text-fill: #fff;
+	-fx-background-color: rgba(120, 34, 34, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
+}
+.namesDescription {
+	-fx-font: 15px Verdana;
+	-fx-text-fill: #fff;
+	-fx-background-color: rgba(120, 34, 34, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
+}
+.header1 {
+	-fx-font: 24px Verdana;
+	-fx-text-fill: yellow;
+	-fx-background-color: rgba(120, 34, 34, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
+}
+.header2 {
+	-fx-font: 22px Verdana;
+	-fx-text-fill: orange;
+	-fx-background-color: rgba(120, 34, 34, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
+}
+.names {
+	-fx-font: 20px Verdana;
+	-fx-font-weight: bold;
+	-fx-text-fill: #fff;
+	-fx-background-color: rgba(120, 34, 34, 1);
+	-fx-background-radius: 5px;
+	-fx-padding: 0.2em;
+}
+.button {
+	-fx-background-color: rgba(23, 0, 226, 1);
+	-fx-background-radius: 8px; 
+	-fx-text-fill: #fff;
+	-fx-border-color: #fff;
+	-fx-border-radius: 8px;
+	-fx-border-style: solid;
+	-fx-padding: 10px;
+	-fx-pref-width: 150px;
+	-fx-font-family: Verdana;
+}
+
+.button:hover {
+	-fx-cursor: hand;
+	-fx-background-color: darkblue;
+}
