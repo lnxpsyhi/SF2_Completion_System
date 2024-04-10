@@ -113,12 +113,12 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="names" text="Tracy Rein L.T Caguioa">
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="names" text="Tracy Rein L.T. Caguioa">
                            <HBox.margin>
                               <Insets left="25.0" />
                            </HBox.margin>
                         </Label>
-                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="486.0" styleClass="namesDescription" text="Analyzed the gathered data for the documentation" />
+                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="486.0" styleClass="namesDescription" text="Analyzed the gathered data for the documentation." />
                      </children>
                   </HBox>
                </children>

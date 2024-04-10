@@ -32,7 +32,6 @@ public class HomeController implements Initializable {
 	private Parent root;
 	private Alert alert = new Alert(AlertType.WARNING);
 
-	
 	public void goToDateConfiguration(MouseEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DateConfiguration.fxml"));
 		root = loader.load();
@@ -83,6 +82,7 @@ public class HomeController implements Initializable {
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+
 		stage.show();
 	}
 
