@@ -86,4 +86,6 @@
 	-fx-background-radius: 5px;
 	-fx-padding: 0.2em;
 }
-	
+.bg {
+	-fx-background-color: #fff;
+}

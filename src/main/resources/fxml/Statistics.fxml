@@ -130,14 +130,21 @@
                         </VBox>
                         <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="399.0">
                            <children>
-                              <LineChart fx:id="chart">
-                                <xAxis>
-                                  <CategoryAxis side="BOTTOM" />
-                                </xAxis>
-                                <yAxis>
-                                  <NumberAxis side="LEFT" />
-                                </yAxis>
-                              </LineChart>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="bg">
+                                 <top>
+                                    <LineChart fx:id="lineChart" title="Presence per day" BorderPane.alignment="CENTER">
+                                      <xAxis>
+                                        <CategoryAxis label="Dates" side="BOTTOM" fx:id="x" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis fx:id="y" label="Attendance" side="LEFT" />
+                                      </yAxis>
+                                    </LineChart>
+                                 </top>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </VBox.margin>
+                              </BorderPane>
                            </children>
                         </VBox>
                      </children>

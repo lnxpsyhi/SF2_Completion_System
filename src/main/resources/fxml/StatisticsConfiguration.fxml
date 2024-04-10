@@ -11,22 +11,22 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../stylesheet/ConfigurationStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.APConfigurationController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../stylesheet/ConfigurationStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StatisticsConfigurationController">
    <center>
       <BorderPane styleClass="borderpane" BorderPane.alignment="CENTER">
           <top>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="800.0" spacing="2.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
                   <HBox prefWidth="200.0">
                      <children>
-                        <Label prefHeight="33.0" styleClass="label1" text="Absences/Presences Configuration">
+                        <Label prefHeight="33.0" styleClass="label1" text="Statistics Configuration">
                            <HBox.margin>
                               <Insets left="25.0" />
                            </HBox.margin>
                         </Label>
                         <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
-                              <Insets left="365.0" right="10.0" />
+                              <Insets left="475.0" right="10.0" />
                            </HBox.margin>
                            <image>
                               <Image url="@../images/back.png" />
@@ -36,28 +36,34 @@
                            </cursor>
                         </ImageView>
                      </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
                   </HBox>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="750.0" styleClass="description" text="Step 2: Get the coordinates of the first and last cell in the &#10;&quot;Absences/Presences Cells&quot; section, as shown below. &#10;Separate with a colon, e.g., A18:BL78." />
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="750.0" styleClass="description" text="Step 3: Get the coordinates of the first and last cell in the &quot;Statistics &#10;Cells&quot; section, as shown below. Separate with a colon, e.g., BU90:BX97. &#10;It's worth noting that only these 5 rows have been selected, as they &#10;contribute to the overall data frame results. Cells outside this range &#10;are disregarded." />
                </children>
+               <BorderPane.margin>
+                  <Insets top="20.0" />
+               </BorderPane.margin>
             </VBox>
          </top>
          <center>
-            <HBox prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="300.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/Configuration/APCoordinate1.jpg" />
+                        <Image url="@../images/Configuration/StatisticsCoordinate1.jpeg" />
                      </image>
                      <HBox.margin>
-                        <Insets left="15.0" />
+                        <Insets left="30.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="227.0" fitWidth="407.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="300.0" fitWidth="364.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/Configuration/APCoordinate2.jpg" />
+                        <Image url="@../images/Configuration/StatisticsCoordinate2.jpeg" />
                      </image>
                      <HBox.margin>
-                        <Insets left="5.0" />
+                        <Insets left="10.0" />
                      </HBox.margin>
                   </ImageView>
                </children>
@@ -66,17 +72,20 @@
          <bottom>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="APCoordinateField" prefHeight="34.0" prefWidth="225.0" promptText="e.g., A18:BL78">
+                  <TextField fx:id="statsCoordinateField" prefHeight="34.0" prefWidth="225.0" promptText="e.g., K16:BE16">
                      <HBox.margin>
                         <Insets left="400.0" top="30.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" onAction="#goToStatisticsConfiguration" styleClass="btn1" text="Proceed">
+                  <Button mnemonicParsing="false" onAction="#saveConfiguration" styleClass="btn1" text="Save Configuration">
                      <HBox.margin>
-                        <Insets left="10.0" top="29.0" />
+                        <Insets left="10.0" top="30.0" />
                      </HBox.margin>
                   </Button>
                </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
             </HBox>
          </bottom>
       </BorderPane>

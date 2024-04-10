@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author romme
- *
- */
-package custexception;
