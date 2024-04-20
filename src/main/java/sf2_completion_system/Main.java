@@ -1,6 +1,5 @@
 package sf2_completion_system;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import javafx.application.Application;
@@ -28,7 +27,7 @@ public class Main extends Application {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			}
+		}
 	}
 	public static void main(String[] args) {
 		launch(args);

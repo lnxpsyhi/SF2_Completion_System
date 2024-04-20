@@ -170,15 +170,11 @@ public class RunAutomationController implements Initializable {
 		
 		ResultsController controller = loader.getController();
 		
-		if (lateEnrollmentBoys.getText().isEmpty()) {
-			cstats.setLateEnrolmentBoys(0);
-		} else if (lateEnrollmentGirls.getText().isBlank()) {
-			cstats.setLateEnrolmentGirls(0);
-		} else {
-			cstats.setLateEnrolmentBoys(Integer.parseInt(lateEnrollmentBoys.getText()));
-			cstats.setLateEnrolmentGirls(Integer.parseInt(lateEnrollmentGirls.getText()));
-			cstats.setLateEnrolmentTotal(Integer.parseInt(lateEnrollmentBoys.getText()) + Integer.parseInt(lateEnrollmentGirls.getText()));
-		}
+		cstats.setLateEnrolmentBoys(lateEnrollmentBoys.getText().isEmpty() ? 0 : Integer.parseInt(lateEnrollmentBoys.getText()));
+		cstats.setLateEnrolmentGirls(lateEnrollmentGirls.getText().isEmpty() ? 0 : Integer.parseInt(lateEnrollmentGirls.getText()));
+
+		cstats.setLateEnrolmentTotal((lateEnrollmentBoys.getText().isEmpty() ? 0 : Integer.parseInt(lateEnrollmentBoys.getText()) + (lateEnrollmentGirls.getText().isEmpty() ? 0 : Integer.parseInt(lateEnrollmentGirls.getText()))));
+
 		
 		cd.countDates(PATH, dateCoordinates, sheetName);
 		cs.countStudents(PATH, apCoordinates, sheetName);
